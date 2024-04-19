@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MdMenu, MdClose } from "react-icons/md";
 import { usePathname } from 'next/navigation'
 import Button from '@/components/button'
+import { TypeAnimation } from 'react-type-animation'
 
 export default function NavBar({
   settings,
@@ -104,13 +105,31 @@ export default function NavBar({
 }
 
 function NameLogo({ name }: { name: string }) {
+  const [typingStatus, setTypingStatus] = useState('Initializing')
+
   return (
     <Link
       href="/"
       aria-label="Home page"
-      className="text-xl font-extrabold tracking-tighter text-slate-900"
+      className="text-2xl font-extrabold tracking-tighter text-slate-900"
     >
-      {name}
+      <TypeAnimation
+        sequence={[
+          1000,
+          () => { setTypingStatus('typing') },
+          name,
+          () => { setTypingStatus('typed') },
+          9000,
+          () => { setTypingStatus('deleting') },
+          "Creative Developer",
+          () => { setTypingStatus('deleted') },
+          3000
+        ]}
+        speed={60}
+        deletionSpeed={80}
+        wrapper="h2"
+        repeat={Infinity}
+      />
     </Link>
   );
 }
