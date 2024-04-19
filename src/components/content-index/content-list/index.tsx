@@ -78,10 +78,10 @@ export default function ContentList({ items, contentType, viewMoreText = 'Read M
               className="flex flex-col justify-between border-t border-t-slate-100 py-10 text-slate-200 md:flex-row gap-y-4"
             >
               <div className="flex flex-col gap-y-1.5 ml-4">
-                <div className="text-3xl font-bold">
+                <div className="text-[clamp(1.45rem,10vw,1rem)] md:text-3xl font-bold">
                   { item.title }
                 </div>
-                <div className="flex gap-4 text-sky-500 text-lg font-bold">
+                <div className="flex flex-wrap gap-4 text-sky-500 text-lg font-bold">
                   { item.tags.map((tag) => (
                     <span
                       key={ tag }
@@ -92,7 +92,7 @@ export default function ContentList({ items, contentType, viewMoreText = 'Read M
               </div>
               {
                 <div
-                  className="mr-4 relative flex w-fit items-center justify-center overflow-hidden px-4 py-2 font-bold transition-transform ease-out group-hover:scale-105">
+                  className="mr-4 ml-4 relative flex w-fit items-center justify-center overflow-hidden px-4 py-2 font-bold transition-transform ease-out group-hover:scale-105">
                   <span
                     className="absolute inset-0 z-0 h-1 translate-y-9 md:translate-y-[3.75rem] -translate-x-36 bg-sky-500 transition-transform duration-300 delay-250 ease-in-out group-hover:translate-x-0"/>
                   <span

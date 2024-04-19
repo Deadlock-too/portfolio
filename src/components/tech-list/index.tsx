@@ -41,6 +41,7 @@ export default function TechList() {
   return (
     <section
       ref={ component }
+      className="overflow-hidden"
     >
       <Boundary as="div">
         <Heading size="xl" className="focus-in-expand mb-8" as="h2">
@@ -58,7 +59,7 @@ export default function TechList() {
               <Fragment key={ index }>
                 <span
                   className={ clsx(
-                    'tech-item text-8xl font-extrabold uppercase tracking-tighter',
+                    'tech-item text-5xl md:text-8xl font-extrabold uppercase tracking-tighter',
                   )
                   }
                   style={ { color: index === 22 && tech.color ? tech.color : 'inherit' } }

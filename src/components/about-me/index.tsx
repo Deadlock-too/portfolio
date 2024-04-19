@@ -25,7 +25,7 @@ export default function AboutMe() {
         <Avatar
           src={ profilePicture }
           alt="A picture of me"
-          className="row-start-1 max-w-sm md:col-start-2 md:row-end-3"
+          className="justify-self-center row-start-1 max-w-sm md:col-start-2 md:row-end-3"
         />
       </div>
     </Boundary>
