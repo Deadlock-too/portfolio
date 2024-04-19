@@ -38,8 +38,8 @@
         "Three.js"
       ],
       "startDate": "2024-04-15",
-      "url": "",
-      "content": "<h3>What is it?</h3><p><a href=\"http://www.craescustefangabriel.it\" target=\"_blank\">This</a> is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.</p><h3>Features</h3><p><ul><li>Interactive Homepage Hero</li><li>About page</li><ul><li>Professional summary</li><li>What I use</li><li>Experience</li></ul><li>Blog posts</li><li>Projects</li></ul></p><h3>Tech</h3><p>The website uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
+      "url": "https://github.com/Deadlock-too/portfolio",
+      "content": "<h3>What is it?</h3><p><a href=\"/\" target=\"_blank\">This</a> is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.</p><h3>Features</h3><p><ul><li>Interactive Homepage Hero</li><li>About page</li><ul><li>Professional summary</li><li>What I use</li><li>Experience</li></ul><li>Blog posts</li><li>Projects</li></ul></p><h3>Tech</h3><p>The website uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
     }
   ],
   "blogPosts": [
