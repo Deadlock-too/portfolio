@@ -1,0 +1,99 @@
+{
+  "projects": [
+    {
+      "id": "another-password-manager",
+      "title": "Another Password Manager",
+      "tags": [
+        "Typescript",
+        "Tailwind CSS",
+        "Electron",
+        "React"
+      ],
+      "startDate": "2023-12-03",
+      "url": "https://github.com/Deadlock-too/anotherpasswordmanager-desktop",
+      "content": "<h3>What is it?</h3><p>Another-PasswordManager is an opensource password manager written using Typescript, React, Tailwind and Electron.</p><h3>Features</h3><p><ul><li>AES-256 Encryption</li><li>OTP management</li><li>Basic entry management (creation, deletion, editing)</li><li>Resizable UI columns</li><li>Localization</li><ul><li>Italian</li><li>English</li></ul><li>Auto-save</li><li>Open behaviors</li><ul><li>Open at startup</li><li>Open minimized</li></ul><li>Tray</li><ul><li>Minimize to tray</li><li>Close to tray</li></ul><li>Theming</li><ul><li>Choice from available themes</li><li>Sync with system (with selection for light and dark themes to use)</li></ul><li>Auto-lock</li><ul><li>Lock timeout</li><li>Lock on minimize</li><li>Lock on close</li><li>Lock on suspend</li></ul><li>Clipboard</li><ul><li>Copy field value to clipboard</li><li>Clipboard clear timeout</li><li>Clipboard clear on lock</li></ul></ul></p><h3>Tech</h3><p>Another-PasswordManager uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/electron/electron\" target=\"_blank\">Electron</a> - Cross-platform desktop application framework</li><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/webpack/webpack\" target=\"_blank\">Webpack</a> - Static module bundler for modern JavaScript applications</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
+    },
+    {
+      "id": "creative-hobbies-web-site",
+      "title": "Creative Hobbies E-Commerce Website",
+      "tags": [
+        "Typescript",
+        "Tailwind CSS",
+        "Next.js",
+        "React"
+      ],
+      "startDate": "2024-03-11",
+      "url": "https://github.com/Deadlock-too/creative-hobbies-store-storefront",
+      "content": "<h3>What is it?</h3><p><a href=\"http://www.creativehobbies.it\" target=\"_blank\">Creative Hobbies</a> is an online e-commerce store written using Typescript, React, Tailwind and Next.js.</p><h3>Features</h3><p><ul><li>TODO</li></ul></p><h3>Tech</h3><p>The website uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/shadcn-ui/ui\" target=\"_blank\">shadcn/ui</a> - A beautifully designed UI component repository</li><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/webpack/webpack\" target=\"_blank\">Webpack</a> - Static module bundler for modern JavaScript applications</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
+    },
+    {
+      "id": "portfolio-website",
+      "title": "Portfolio Website",
+      "tags": [
+        "Typescript",
+        "Tailwind CSS",
+        "Next.js",
+        "React",
+        "GSAP",
+        "Three.js"
+      ],
+      "startDate": "2024-04-15",
+      "url": "",
+      "content": "<h3>What is it?</h3><p><a href=\"http://www.craescustefangabriel.it\" target=\"_blank\">This</a> is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.</p><h3>Features</h3><p><ul><li>Interactive Homepage Hero</li><li>About page</li><ul><li>Professional summary</li><li>What I use</li><li>Experience</li></ul><li>Blog posts</li><li>Projects</li></ul></p><h3>Tech</h3><p>The website uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
+    }
+  ],
+  "blogPosts": [
+    {
+      "id": "my-brief-cybersecurity-adventure",
+      "title": "My brief cybersecurity adventure",
+      "tags": [
+        "Cybersecurity",
+        "Cryptography",
+        "Ethical Hacking"
+      ],
+      "date": "2024-04-18",
+      "content": "<h3>How it started</h3><p>It all started at the beginning of 2023 when my girlfriend was relocating to Parma further her studies. At the time, I was working as a junior bakend developer at Tecsis S.r.l., focusing on backend solutions. I was offered a generous remote work agreement, so I decided to take the opportunity and move with her. Feeling the stress of thight deadlines, I sought something new to learn. Fascinated by the world of cybersecurity and ethical hacking, I began studying in my free time. Eventually, I decided to pursue it <span style=\"text-wrap: nowrap\">full-time</span>, leaving my job in June 2023.</p><h3>First steps</h3><p>My introduction to cybersecurity started with cryptography. I delved into books and videos, grasping the basics of encryption and decryption. I also familiarized myself with ethical hacking tools like Nmap, Wireshark and Metasploit, and learned about web application security using tools such as Burp Suite and OWASP ZAP. Additionally, I explored Linux and Windows security, learning how to use tools like Powershell and Bash, and how to exploit Active Directory and Kerberos vulnerabilities.</p><h3>Testing the knowledge</h3>\n<p>After months of solitary study, I decided to put my knowledge to the test. I started testing my skills on platforms like Hack The Box and TryHackMe, trying to solve the challenges proposed by the platform. Starting with the easiest challenges, I quickly realized my limitations. Taking a step back, I revisited the basics, this time focusing on the practical part.</p><h3>Trying again</h3><p>Months of study and practice led me to try again. Despite some initial progress, I found myself struggling with even some of the easier challenges, not being able to solve them without looking at the solutions. I started to feel frustrated and demotivated.</p><h3>Realization</h3><p>While the subject intrigued me, I came to the trealization that cybersecurity might not be my calling. The stress and demands outweighed my enjoyment, and I lacked the mindset of a professional in the field. Accepting this, I refocused on my development work, contemplating venturing into some frontend development.</p><h3>Back to Development</h3><p>Studying new technologies, I embarked on some personal projects that I'm yet to complete:<ul><li><a href=\"/project/another-password-manager\" target=\"_blank\">Another Password Manager</a> - A simple password manager written in TypeScript, using the Electron to ease the cross-platform development.</li><li><a href=\"/project/creative-hobbies-web-site\" target=\"_blank\">Creative Hobbies</a> - An E-Commerce website made for my girlfriend and her handcrafting hobbies.</li><li><a href=\"/\" target=\"_blank\">This</a> - A portfolio website to showcase my work and experiences.</li></ul></p><h3>Conclusion</h3><p>Though my brief journey into cybersecurity didn't yield the success I had hoped for, I cherish the experience. It taught me valuable lessons about risk-taking, resilience, and adaptability. While it wasn't the right fit for me, I'm unafraid of failure, and I embrace the opportunity to explore new paths.</p>"
+
+    }
+  ],
+  "techList": [
+    {
+      "name": "TypeScript",
+      "color": "#fabe13"
+    },
+    {
+      "name": "React",
+      "color": "#29d8ff"
+    },
+    {
+      "name": "Next.js",
+      "color": "#ffffff"
+    },
+    {
+      "name": "C#",
+      "color": "#0ae448"
+    },
+    {
+      "name": ".NET",
+      "color": "#ff7e33"
+    }
+  ],
+  "experience": {
+    "workExperience": [
+      {
+        "title": "Junior Backend Developer",
+        "timePeriod": "2019 - 2023",
+        "institution": "Tecsis S.r.l.",
+        "description": "At the start of my career I worked on the development of backend solutions using C# and frameworks like Entity Framework and ASP.NET Boilerplate. I've also worked on the development and maintenance of an infrastructure based on microservices, using Docker and Kubernetes in the Azure Cloud environment. Over the course of this first work experience, I also acquired experience in the development of integration solutions with third-party services, such as PagoPA and Moodle. Even if my principal focus was on the backend, I've also started approaching the frontend world, acquiring some basic knowledge of Javascript, Typescript and the React library."
+      }
+    ],
+    "education": [
+      {
+        "title": "High School Diploma - Business Information Systems",
+        "timePeriod": "2013 - 2018",
+        "institution": "ITC P.F. Calvi",
+        "description": "During my high school years I studied the basics of computer science, learning the fundamentals of programming and the use of the main office automation tools. I also studied the basics of economics and business management, acquiring the necessary knowledge to understand the functioning of a company and the role of information systems within it. During the last year of high school, I also had the opportunity to do an internship at a local company, where I had the opportunity to put into practice the knowledge acquired during the course of study."
+      }
+    ]
+  }
+}
