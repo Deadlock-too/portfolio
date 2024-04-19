@@ -3,6 +3,7 @@
     {
       "id": "another-password-manager",
       "title": "Another Password Manager",
+      "description": "Another-PasswordManager is an opensource password manager written using Typescript, React, Tailwind and Electron.",
       "tags": [
         "Typescript",
         "Tailwind CSS",
@@ -16,6 +17,7 @@
     {
       "id": "creative-hobbies-web-site",
       "title": "Creative Hobbies E-Commerce Website",
+      "description": "Creative Hobbies is an online e-commerce store written using Typescript, React, Tailwind and Next.js.",
       "tags": [
         "Typescript",
         "Tailwind CSS",
@@ -29,6 +31,7 @@
     {
       "id": "portfolio-website",
       "title": "Portfolio Website",
+      "description": "This is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.",
       "tags": [
         "Typescript",
         "Tailwind CSS",
@@ -46,6 +49,7 @@
     {
       "id": "my-brief-cybersecurity-adventure",
       "title": "My brief cybersecurity adventure",
+      "description": "A brief recount of my journey into the world of cybersecurity and ethical hacking.",
       "tags": [
         "Cybersecurity",
         "Cryptography",
