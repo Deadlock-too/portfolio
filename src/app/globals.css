@@ -70,3 +70,9 @@
     transform: scale3d(1, 1, 1);
   }
 }
+
+@media (max-width: 768px) {
+  .max-width-on-mobile {
+    width: 100vw;
+  }
+}

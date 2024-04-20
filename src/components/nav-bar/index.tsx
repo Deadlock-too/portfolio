@@ -27,8 +27,8 @@ export default function NavBar({
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main navigation">
-      <ul className="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
+    <nav aria-label="Main navigation" className="max-width-on-mobile">
+      <ul className="flex flex-col max-width-on-mobile justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
         <div className="flex items-center justify-between">
           <NameLogo name={settings.data.name} />
           <button
@@ -42,8 +42,8 @@ export default function NavBar({
         </div>
         <div
           className={clsx(
-            "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
-            open ? "translate-x-0" : "translate-x-[100%]",
+            "fixed max-width-on-mobile bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
+            open ? "translate-x-0" : "translate-x-full ",
           )}
         >
           <button
@@ -105,8 +105,6 @@ export default function NavBar({
 }
 
 function NameLogo({ name }: { name: string }) {
-  const [typingStatus, setTypingStatus] = useState('Initializing')
-
   return (
     <Link
       href="/"
@@ -116,13 +114,9 @@ function NameLogo({ name }: { name: string }) {
       <TypeAnimation
         sequence={[
           1000,
-          () => { setTypingStatus('typing') },
           name,
-          () => { setTypingStatus('typed') },
           9000,
-          () => { setTypingStatus('deleting') },
           "Creative Developer",
-          () => { setTypingStatus('deleted') },
           3000
         ]}
         speed={60}
