@@ -7,7 +7,7 @@ import { SpotifyApi } from '@spotify/web-api-ts-sdk'
 import Image from 'next/image'
 import React, { Suspense } from 'react'
 import { Game, Movie, Song } from '@/types'
-import SteamAPI from 'steamapi'
+import SteamAPI from '../../internalSteamApi'
 
 export const metadata = {
   title: 'About me',
