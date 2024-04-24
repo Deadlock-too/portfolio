@@ -42,7 +42,7 @@
       ],
       "startDate": "2024-04-15",
       "url": "https://github.com/Deadlock-too/portfolio",
-      "content": "<h3>What is it?</h3><p><a href=\"/\" target=\"_blank\">This</a> is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.</p><h3>Features</h3><p><ul><li>Interactive Homepage Hero</li><li>About page</li><ul><li>Professional summary</li><li>What I use</li><li>Experience</li></ul><li>Blog posts</li><li>Projects</li></ul></p><h3>Tech</h3><p>The website uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
+      "content": "<h3>What is it?</h3><p><a href=\"/\" target=\"_blank\">This</a> is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.</p><h3>Features</h3><p><ul><li>Interactive Homepage Hero</li><li>About page</li><ul><li>Professional summary</li><li>What I use</li><li>Experience</li><li>My passions</li></ul><li>Blog posts</li><li>Projects</li></ul></p><h3>Tech</h3><p>The website uses a number of open source projects to work properly:<ul><li><a href=\"https://github.com/microsoft/TypeScript\" target=\"_blank\">TypeScript</a> - Typed superset of JavaScript that compiles to plain JavaScript</li><li><a href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\">Tailwind CSS</a> - Utility-first CSS framework for rapidly building custom designs</li></ul></p>"
     }
   ],
   "blogPosts": [
@@ -57,7 +57,6 @@
       ],
       "date": "2024-04-18",
       "content": "<h3>How it started</h3><p>It all started at the beginning of 2023 when my girlfriend was relocating to Parma further her studies. At the time, I was working as a junior bakend developer at Tecsis S.r.l., focusing on backend solutions. I was offered a generous remote work agreement, so I decided to take the opportunity and move with her. Feeling the stress of thight deadlines, I sought something new to learn. Fascinated by the world of cybersecurity and ethical hacking, I began studying in my free time. Eventually, I decided to pursue it <span style=\"text-wrap: nowrap\">full-time</span>, leaving my job in June 2023.</p><h3>First steps</h3><p>My introduction to cybersecurity started with cryptography. I delved into books and videos, grasping the basics of encryption and decryption. I also familiarized myself with ethical hacking tools like Nmap, Wireshark and Metasploit, and learned about web application security using tools such as Burp Suite and OWASP ZAP. Additionally, I explored Linux and Windows security, learning how to use tools like Powershell and Bash, and how to exploit Active Directory and Kerberos vulnerabilities.</p><h3>Testing the knowledge</h3>\n<p>After months of solitary study, I decided to put my knowledge to the test. I started testing my skills on platforms like Hack The Box and TryHackMe, trying to solve the challenges proposed by the platform. Starting with the easiest challenges, I quickly realized my limitations. Taking a step back, I revisited the basics, this time focusing on the practical part.</p><h3>Trying again</h3><p>Months of study and practice led me to try again. Despite some initial progress, I found myself struggling with even some of the easier challenges, not being able to solve them without looking at the solutions. I started to feel frustrated and demotivated.</p><h3>Realization</h3><p>While the subject intrigued me, I came to the trealization that cybersecurity might not be my calling. The stress and demands outweighed my enjoyment, and I lacked the mindset of a professional in the field. Accepting this, I refocused on my development work, contemplating venturing into some frontend development.</p><h3>Back to Development</h3><p>Studying new technologies, I embarked on some personal projects that I'm yet to complete:<ul><li><a href=\"/project/another-password-manager\" target=\"_blank\">Another Password Manager</a> - A simple password manager written in TypeScript, using the Electron to ease the cross-platform development.</li><li><a href=\"/project/creative-hobbies-web-site\" target=\"_blank\">Creative Hobbies</a> - An E-Commerce website made for my girlfriend and her handcrafting hobbies.</li><li><a href=\"/\" target=\"_blank\">This</a> - A portfolio website to showcase my work and experiences.</li></ul></p><h3>Conclusion</h3><p>Though my brief journey into cybersecurity didn't yield the success I had hoped for, I cherish the experience. It taught me valuable lessons about risk-taking, resilience, and adaptability. While it wasn't the right fit for me, I'm unafraid of failure, and I embrace the opportunity to explore new paths.</p>"
-
     }
   ],
   "techList": [
@@ -99,5 +98,122 @@
         "description": "During my high school years I studied the basics of computer science, learning the fundamentals of programming and the use of the main office automation tools. I also studied the basics of economics and business management, acquiring the necessary knowledge to understand the functioning of a company and the role of information systems within it. During the last year of high school, I also had the opportunity to do an internship at a local company, where I had the opportunity to put into practice the knowledge acquired during the course of study."
       }
     ]
-  }
+  },
+  "passions": [
+    {
+      "name": "Music",
+      "icon": "🎵",
+      "description": "Some of my favourites songs:"
+    },
+    {
+      "name": "Gaming",
+      "icon": "🎮",
+      "description": "Some games that I really enjoyed playing:",
+      "items": [
+        {
+          "name": "Horizon Forbidden West",
+          "appId": 2420110,
+          "url": "https://store.steampowered.com/app/2420110/Horizon_Forbidden_West_Complete_Edition/"
+        },
+        {
+          "name": "Marvel's Spider-Man Remastered",
+          "appId": 1817070,
+          "url": "https://store.steampowered.com/app/1817070/Marvels_SpiderMan_Remastered/"
+        },
+        {
+          "name": "Elden Ring",
+          "appId": 1245620,
+          "url": "https://store.steampowered.com/app/12456020/ELDEN_RING/"
+        },
+        {
+          "name": "Hollow Knight",
+          "appId": 367520,
+          "url": "https://store.steampowered.com/app/367520/Hollow_Knight/"
+        },
+        {
+          "name": "Hades",
+          "appId": 1145360,
+          "url": "https://store.steampowered.com/app/1145360/Hades/"
+        },
+        {
+          "name": "Ori and the Will of the Wisps",
+          "appId": 1057090,
+          "url": "https://store.steampowered.com/app/1057090/Ori_and_the_Will_of_the_Wisps/"
+        },
+        {
+          "name": "Baldur's Gate 3",
+          "appId": 1086940,
+          "url": "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/"
+        },
+        {
+          "name": "Dark Souls III",
+          "appId": 374320,
+          "url": "https://store.steampowered.com/app/374320/DARK_SOULS_III/"
+        }
+      ]
+    },
+    {
+      "name": "Movies",
+      "icon": "🎥",
+      "description": "Some movies that I'll never stop re-watching:",
+      "items": [
+        {
+          "title": "Inception"
+        },
+        {
+          "title": "Dune"
+        },
+        {
+          "title": "Dune 2"
+        },
+        {
+          "title": "Interstellar"
+        },
+        {
+          "title": "Oppenheimer"
+        },
+        {
+          "title": "Snowden"
+        },
+        {
+          "title": "The Creator"
+        },
+        {
+          "title": "Chappie"
+        },
+        {
+          "title": "Ex Machina"
+        },
+        {
+          "title": "Predestination"
+        },
+        {
+          "title": "Parasite (2019)"
+        },
+        {
+          "title": "Polar"
+        }
+      ]
+    },
+    {
+      "name": "TV Series",
+      "icon": "📺",
+      "description": "Currently watching:"
+    },
+    {
+      "name": "Anime",
+      "icon": "🍱",
+      "description": "Currently watching:"
+    },
+    {
+      "name": "Manga",
+      "icon": "📚",
+      "description": "Currently reading:"
+    },
+    {
+      "name": "Programming",
+      "icon": "💻",
+      "description": "Currently working on:"
+    }
+  ]
 }
