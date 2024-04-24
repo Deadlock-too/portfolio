@@ -36,7 +36,50 @@ export default async function About() {
   )
 
   let songs: Song[] = []
+  await RetryOnFailure(() => HydrateSongs({ spotifyApi, secrets, songs }))
 
+  let games: Game[] = []
+  await RetryOnFailure(() => HydrateGames({ steamApi, secrets, games }))
+
+  let movies: Movie[] = []
+  await RetryOnFailure(() => HydrateMovies({ secrets, sources: data.passions.find((passion) => passion.name === 'Movies')?.items ?? [], movies }))
+
+  return (
+    <>
+      <AboutMe/>
+      <TechList/>
+      <Experience heading={ 'Experience' } items={ experience.workExperience }/>
+      <Experience heading={ 'Education' } items={ experience.education }/>
+      <Suspense fallback={ <div>Loading...</div> }>
+        <Passions
+          heading={ 'My passions' }
+          items={ passions }
+          songs={ songs }
+          games={ games }
+          movies={ movies }
+        />
+      </Suspense>
+    </>
+  )
+}
+
+async function RetryOnFailure<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
+  try {
+    return await fn()
+  } catch (error) {
+    if (retries === 0) {
+      throw error
+    }
+
+    return RetryOnFailure(fn, retries - 1)
+  }
+}
+
+async function HydrateSongs({ spotifyApi, secrets, songs }: {
+  spotifyApi: SpotifyApi,
+  secrets: { spotify_playlist_id: string },
+  songs: Song[]
+}) {
   await spotifyApi.playlists.getPlaylist(secrets.spotify_playlist_id).then((playlist) => {
     playlist.tracks.items.forEach((item, index) => {
       if (index > 7) return
@@ -46,9 +89,13 @@ export default async function About() {
       })
     })
   })
+}
 
-  let games: Game[] = []
-
+async function HydrateGames({ steamApi, secrets, games }: {
+  steamApi: SteamAPI,
+  secrets: { steam_id: string },
+  games: Game[]
+}) {
   data.passions.find((passion) => passion.name === 'Gaming')?.items?.forEach((item) => {
     item = item as { appId: number, name: string, url: string }
     games.push({
@@ -91,11 +138,16 @@ export default async function About() {
       return b.timePlayed - a.timePlayed
     })
   })
+}
 
-  let movies: Movie[] = []
-
-  const movieList = passions.find((passion) => passion.name === 'Movies')?.items ?? []
-  for (let movie of movieList) {
+async function HydrateMovies({ secrets, sources, movies }: {
+  secrets: {
+    tmdb_api_key: string
+  },
+  sources: any[],
+  movies: Movie[]
+}) {
+  for (let movie of sources) {
     movie = movie as { title: string, releaseDate: Date, overview: string }
     await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ secrets.tmdb_api_key }&query=${ movie.title }`)
       .then((response) => {
@@ -117,22 +169,4 @@ export default async function About() {
         })
       })
   }
-
-  return (
-    <>
-      <AboutMe/>
-      <TechList/>
-      <Experience heading={ 'Experience' } items={ experience.workExperience }/>
-      <Experience heading={ 'Education' } items={ experience.education }/>
-      <Suspense fallback={ <div>Loading...</div> }>
-        <Passions
-          heading={ 'My passions' }
-          items={ passions }
-          songs={ songs }
-          games={ games }
-          movies={ movies }
-        />
-      </Suspense>
-    </>
-  )
 }
