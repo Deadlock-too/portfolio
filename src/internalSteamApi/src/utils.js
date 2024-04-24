@@ -20,12 +20,6 @@ export async function fetch(url, options) {
 
 // App IDs are positive integers that are divisible by 10
 const reID = /^\d{17}$/;
-export function assertApp(apps) {
-    if (!Array.isArray(apps))
-        apps = [apps];
-    if (apps.some(app => !(app > 0 && app % 1 === 0)))
-        throw new TypeError('Invalid app ID provided');
-}
 // User IDs are 17 digit numbers
 export function assertID(ids) {
     if (!Array.isArray(ids))
