@@ -19,8 +19,8 @@ export type Song = {
 export type Game = {
   appId: number
   title: string
-  image: React.ReactNode
-  logo: React.ReactNode
+  image?: React.ReactNode
+  logo?: React.ReactNode
   timePlayed?: number
   lastPlayed?: Date
   url: string

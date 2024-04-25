@@ -1,18 +1,14 @@
-'use client'
-
 import Boundary from '@/components/boundary'
 import Heading from '@/components/heading'
+import MusicDisplay from '@/components/passions/music'
+import GamesDisplay from '@/components/passions/games'
+import MoviesDisplay from '@/components/passions/movies'
 import { Game, Movie, Song } from '@/types'
-import { BiPause, BiPlay } from 'react-icons/bi'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import clsx from 'clsx'
-import Vinyl from '../../../public/images/vinyl.svg'
+import data from '@/data/data.json'
+import SteamAPI from '@/internalSteamApi/index'
+import { SpotifyApi } from '@spotify/web-api-ts-sdk'
 import Image from 'next/image'
-import CardContainer from '@/components/card-container'
-import Card from '@/components/card'
-import { FlippableCard, FlippableCardBack, FlippableCardFront } from '@/components/flippable-card'
-import { ScrollArea, ScrollBar } from '@/components/scroll-area'
+import React from 'react'
 
 type PassionsProps = {
   heading: string
@@ -21,12 +17,48 @@ type PassionsProps = {
     icon: string
     description: string
   }[]
-  songs: Song[]
-  games: Game[]
-  movies: any[]
 }
 
-export default function Passions({ heading, items, songs, games, movies }: PassionsProps) {
+export default async function Passions({ heading, items }: PassionsProps) {
+  const secrets = {
+    spotify_user_id: process.env.SPOTIFY_USER_ID ?? '',
+    spotify_client_id: process.env.STEAM_CLIENT_ID ?? '',
+    spotify_client_secret: process.env.STEAM_CLIENT_SECRET ?? '',
+    spotify_playlist_id: process.env.SPOTIFY_PLAYLIST_ID ?? '',
+    steam_web_api_key: process.env.STEAM_WEB_API_KEY ?? '',
+    steam_account_id: process.env.STEAM_ACCOUNT_ID ?? '',
+    steam_id: process.env.STEAM_ID ?? '',
+    tmdb_api_key: process.env.TMDB_API_KEY ?? ''
+  }
+
+  const steamApi = new SteamAPI(secrets.steam_web_api_key)
+  const spotifyApi = SpotifyApi.withClientCredentials(
+    secrets.spotify_client_id,
+    secrets.spotify_client_secret
+  )
+
+  let movies: Movie[] = []
+  await RetryOnFailure(() => GetMovies({
+    secrets,
+    sources: data.passions.find((passion) => passion.name === 'Movies')?.items ?? [],
+    movies
+  }))
+
+  let songs: Song[] = []
+  await RetryOnFailure(() => GetSongs({
+    spotifyApi,
+    secrets,
+    songs
+  }))
+
+  let games: Game[] = []
+  await RetryOnFailure(() => GetGames({
+    steamApi,
+    secrets,
+    games
+  }))
+
+
   return (
     <Boundary>
       <Heading as="h2" size="lg" className="focus-in-expand">
@@ -40,20 +72,25 @@ export default function Passions({ heading, items, songs, games, movies }: Passi
                 switch (item.name) {
                   case 'Music':
                     if (songs.length === 0) return null
-                    return <MusicDisplay heading={ { name: item.name, icon: item.icon } } songs={ songs }
-                                         description={ item.description }/>
+                    return <MusicDisplay
+                      heading={ { name: item.name, icon: item.icon } }
+                      songs={ songs }
+                      description={ item.description }
+                    />
                   case 'Gaming':
                     if (games.length === 0) return null
-                    return <GamesDisplay heading={ { name: item.name, icon: item.icon } } games={ games }
-                                         description={ item.description }/>
+                    return <GamesDisplay
+                      heading={ { name: item.name, icon: item.icon } }
+                      games={ games }
+                      description={ item.description }
+                    />
                   case 'Movies':
                     if (movies.length === 0) return null
-                    return <MoviesDisplay heading={ { name: item.name, icon: item.icon } } movies={ movies }
-                                          description={ item.description }/>
-                  // case 'Books':
-                  //   return <BooksDisplay books={ books }/>
-                  // case 'Games':
-                  //   return <GamesDisplay games={ games }/>
+                    return <MoviesDisplay
+                      heading={ { name: item.name, icon: item.icon } }
+                      movies={ movies }
+                      description={ item.description }
+                    />
                 }
               })()
             }
@@ -64,243 +101,111 @@ export default function Passions({ heading, items, songs, games, movies }: Passi
   )
 }
 
-function MusicDisplay({ songs, heading, description }: {
-  songs: Song[],
-  heading: { name: string, icon: string },
-  description: string
+
+
+async function RetryOnFailure<T>(fn: () => Promise<T>, retries = 3): Promise<any> {
+  try {
+    return await fn()
+  } catch (error) {
+    if (retries === 0) {
+      throw error
+    }
+
+    return await RetryOnFailure(fn, retries - 1)
+  }
+}
+
+async function GetSongs({ spotifyApi, secrets, songs }: {
+  spotifyApi: SpotifyApi,
+  secrets: { spotify_playlist_id: string },
+  songs: Song[]
 }) {
-  const [ audio, setAudio ] = useState<(HTMLAudioElement[] | null)>(null)
-  const [ playing, setPlaying ] = useState<number | null>(null)
-  const [ time, setTime ] = useState<number>(0)
+  return spotifyApi.playlists.getPlaylist(secrets.spotify_playlist_id).then((playlist) => {
+    playlist.tracks.items.forEach((item, index) => {
+      if (index > 7) return
+      songs.push({
+        track: item.track,
+        image: <Image src={ item.track.album.images[0].url } width={ 80 } height={ 80 } alt={ item.track.name }/>
+      })
+    })
+  })
+}
 
-  useEffect(() => {
-    setAudio(songs.map(song => {
-      const result = new Audio(song.track.preview_url ?? '')
-      result.volume = 0.2
-      return result
-    }))
-  }, [ songs ])
+async function GetGames({ steamApi, secrets, games }: {
+  steamApi: SteamAPI,
+  secrets: { steam_id: string },
+  games: Game[]
+}) {
+  data.passions.find((passion) => passion.name === 'Gaming')?.items?.forEach((item) => {
+    item = item as { appId: number, name: string, url: string }
+    games.push({
+      appId: item.appId,
+      title: item.name,
+      url: item.url
+    })
+  })
 
-  function setSongPlaying(index: number) {
-    if (playing === index) {
-      audio?.[index].pause()
-    } else {
-      (async () => {
-        setPlaying(null)
-        setTime(0)
-        audio?.forEach(audio => {
-          if (audio.currentTime !== 0) audio.pause()
-        })
-      })().then(() => {
-        const song = audio?.[index]
-        if (!song) return
-        song.currentTime = 0
-        song.play().then(() => {
-          song.onended = () => {
-            setPlaying((prevState) => {
-              if (prevState === index) return null
-              return prevState
-            })
-            setTime(0)
+  return steamApi.getUserOwnedGames(secrets.steam_id, {
+    filterApps: games.map((game) => game.appId)
+  }).then((details) => {
+    games.forEach((game) => {
+      const detail = details.find((detail) => detail.game.id === game.appId)
+      if (detail) {
+        game.timePlayed = detail.minutes
+        game.lastPlayed = detail.lastPlayedAt
+        game.image = <Image
+          src={ detail.game.coverURL }
+          width={ 120 }
+          height={ 120 }
+          quality={ 90 }
+          alt={ game.title }
+        />
+        game.logo = <Image
+          src={ detail.game.logoURL }
+          width={ 480 }
+          height={ 480 }
+          quality={ 90 }
+          alt={ game.title }
+        />
+      }
+    })
+
+    games.sort((a, b) => {
+      if (!a.timePlayed || !b.timePlayed) {
+        return 0
+      }
+
+      return b.timePlayed - a.timePlayed
+    })
+  })
+}
+
+async function GetMovies({ secrets, sources, movies }: {
+  secrets: {
+    tmdb_api_key: string
+  },
+  sources: any[],
+  movies: Movie[]
+}) {
+  return Promise.all((sources as { title: string, releaseDate: Date, overview: string }[]).map(async (movie, index) => {
+    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ secrets.tmdb_api_key }&query=${ movie.title }`)
+      .then((response) => {
+        response.json().then((data) => {
+          if (data.results.length === 0) return
+
+          movies[index] = {
+            title: data.results[0].title,
+            releaseDate: new Date(data.results[0].release_date),
+            overview: data.results[0].overview,
+            image: <Image
+              src={ `https://image.tmdb.org/t/p/w500${ data.results[0].poster_path }` }
+              width={ 180 }
+              height={ 240 }
+              quality={ 90 }
+              alt={ movie.title }
+            />
           }
-          song.onpause = () => {
-            setPlaying((prevState) => {
-              if (prevState === index || prevState === null) return null
-              return prevState
-            })
-            setTime(0)
-          }
-          song.ontimeupdate = () => {
-            setTime(song.currentTime)
-          }
-          setPlaying(index)
         })
       })
-    }
-  }
-
-  return (
-    <>
-      <Heading as="h3" size="sm">
-        { heading.icon } { heading.name }
-      </Heading>
-      <CardContainer description={ description } className="md:grid-cols-2">
-        {
-          songs.map((song, index) => (
-            <Card
-              key={ index }
-              className={ clsx('flex flex-row p-4 -ml-6 gap-2 hover:opacity-100 hover:scale-105 transition-all ease-in-out duration-300',
-                playing === index ? 'bg-slate-700 opacity-80 scale-105' : 'bg-slate-800 opacity-60'
-              ) }
-            >
-              <div className="song-index">
-                <p
-                  className="text-sm bg-black text-center content-center border-2 rounded-[50%] border-slate-500 w-6 h-6 -ml-2 -mt-2 text-slate-100"
-                >{ index + 1 }</p>
-              </div>
-              <div
-                className="song-entry group border-2 m-1 rounded-2xl border-slate-500 overflow-hidden"
-                onClick={ () => {
-                  setSongPlaying(index)
-                } }
-              >
-                <div className="song-play text-sky-500">
-                  {
-                    playing === index ?
-                      <BiPause className="h-16 w-16 opacity-0 group-hover:opacity-100"/> :
-                      <BiPlay className="h-16 w-16 opacity-0 group-hover:opacity-100"/>
-                  }
-                </div>
-                <div className="group-hover:opacity-40">
-                  { song.image }
-                </div>
-                <div
-                  className={ clsx('song-bar bg-sky-500 h-1.5 w-full ',
-                    playing === index ? 'opacity-100' : 'opacity-0') }
-                  style={ { transform: `translateX(-${ 100 - (time / 30 * 100) }%)` } }
-                />
-              </div>
-              <Link href={ song.track.external_urls.spotify } target="_blank"
-                    className="flex flex-row justify-between items-center w-full p-2">
-                <div className="content-center">
-                  <p className="text-xl">{ song.track.name }</p>
-                  <p className="text-md text-slate-500"
-                     aria-label={ 'by ' + song.track.artists.map(artist => artist.name).join(', ') }>{ song.track.artists.map(artist => artist.name).join(', ') }</p>
-                </div>
-                <Image
-                  src={ Vinyl }
-                  alt="Vinyl"
-                  className={
-                    clsx('h-12 w-12 md:h-14 md:w-14 invert animate-spin transition-all ease-in-out duration-300',
-                      playing === index ? 'opacity-100' : 'opacity-0'
-                    )
-                  }
-                />
-              </Link>
-            </Card>
-          ))
-        }
-      </CardContainer>
-    </>
-  )
-}
-
-function GamesDisplay({ games, heading, description }: {
-  games: Game[],
-  heading: { name: string, icon: string },
-  description: string
-}) {
-  function formatDate(date: Date) {
-    if (date === undefined) return
-
-    const dateOptions: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }
-    return new Intl.DateTimeFormat('en-US', dateOptions).format(new Date(date))
-  }
-
-  function formatTimePlayed(time: number) {
-    const hours = Math.floor((time / 60))
-    const minutes = time % 60
-    return `${ hours }h ${ minutes.toString().padStart(2, '0') }m`
-  }
-
-  return (
-    <>
-      <Heading as="h3" size="sm">
-        { heading.icon } { heading.name }
-      </Heading>
-      <CardContainer description={ description } className="md:grid-cols-2">
-        {
-          games.map((game, index) => (
-            <FlippableCard key={ index } className="-ml-6">
-              <FlippableCardFront
-                className="flex flex-row bg-slate-800/60 gap-2"
-              >
-                <div className="game-display border-2 border-slate-500 rounded-2xl overflow-hidden my-auto ml-3">
-                  { game.image }
-                </div>
-                <div className="w-full content-center h-full">
-                  <div
-                    className="w-56 transition-transform ease-in-out duration-300 m-auto"
-                  >
-                    { game.logo }
-                  </div>
-                </div>
-              </FlippableCardFront>
-              <FlippableCardBack
-                className="flex text-xl flex-col bg-slate-800/60 gap-2 items-center justify-center"
-              >
-                <Link href={ game.url } target="_blank"
-                      className="absolute top-4 left-4 content-center h-10 w-20 md:h-14 md:w-24">
-                  { game.logo }
-                </Link>
-                <div className="pt-4">
-                  <p className="font-bold">Time
-                    played: { game.timePlayed ? formatTimePlayed(game.timePlayed) : '' }</p>
-                  <p className="italic font-extralight text-slate-500">Last
-                    played: { game.lastPlayed ? formatDate(game.lastPlayed) : '' }</p>
-                </div>
-              </FlippableCardBack>
-            </FlippableCard>
-          ))
-        }
-      </CardContainer>
-    </>
-  )
-}
-
-function MoviesDisplay({ movies, heading, description }: {
-  movies: Movie[],
-  heading: { name: string, icon: string },
-  description: string
-}) {
-  function formatDate(date: Date) {
-    if (date === undefined) return
-
-    const dateOptions: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-      localeMatcher: 'lookup',
-    }
-    return new Intl.DateTimeFormat('en-UK', dateOptions).format(new Date(date))
-  }
-
-  return (
-    <>
-      <Heading as="h3" size="sm">
-        { heading.icon } { heading.name }
-      </Heading>
-      <CardContainer description={ description } className="-ml-2 mr-4 md:-ml-6 md:mr-6 movie-grid">
-        { movies.map((movie, index) => (
-          <FlippableCard key={ index } className="h-[23rem] w-full">
-            <FlippableCardFront className="flex flex-col bg-slate-800/60 h-[23rem] p-4 w-full items-center justify-between">
-              <div className="rounded-2xl border-2 border-slate-500 overflow-hidden">
-                { movie.image }
-              </div>
-              <div className="items-center text-center justify-between">
-                <h3 className="text-xl">{ movie.title }</h3>
-                <h4 className="text-sm text-slate-500">{ formatDate(movie.releaseDate) }</h4>
-              </div>
-            </FlippableCardFront>
-            <FlippableCardBack className="bg-slate-800/60 h-[23rem]">
-              <div className="prose prose-invert text-sm">
-                <h3 className="text-md text-center">
-                  <Link href={ '' } target="_blank">{ movie.title } ({ movie.releaseDate.getFullYear() })</Link>
-                </h3>
-                <ScrollArea className="h-[18rem]">
-                  { movie.overview }
-                  <ScrollBar orientation="vertical"/>
-                </ScrollArea>
-              </div>
-            </FlippableCardBack>
-          </FlippableCard>
-        )) }
-      </CardContainer>
-    </>
-  )
+  }))
 }

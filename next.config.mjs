@@ -6,7 +6,7 @@ const nextConfig = {
         hostname: 'i.scdn.co'
       },
       {
-        hostname: 'cdn.akamai.steamstatic.com'
+        hostname: 'steamcdn-a.akamaihd.net'
       },
       {
         hostname: 'image.tmdb.org'
