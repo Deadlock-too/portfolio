@@ -187,13 +187,14 @@ async function GetMovies({ secrets, sources, movies }: {
   sources: any[],
   movies: Movie[]
 }) {
-  return Promise.all((sources as { title: string, releaseDate: Date, overview: string }[]).map(async (movie, index) => {
+  return Promise.all((sources as { title: string, url: string }[]).map(async (movie, index) => {
     return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ secrets.tmdb_api_key }&query=${ movie.title }`)
       .then((response) => {
         response.json().then((data) => {
           if (data.results.length === 0) return
 
           movies[index] = {
+            url: movie.url,
             title: data.results[0].title,
             releaseDate: new Date(data.results[0].release_date),
             overview: data.results[0].overview,

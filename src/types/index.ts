@@ -27,6 +27,7 @@ export type Game = {
 }
 
 export type Movie = {
+  url: string
   title: string
   releaseDate: Date
   overview: string

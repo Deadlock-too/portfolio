@@ -158,40 +158,52 @@
       "description": "Some movies that I'll never stop re-watching:",
       "items": [
         {
-          "title": "Inception"
+          "title": "Inception",
+          "url": "https://www.imdb.com/title/tt1375666/"
         },
         {
-          "title": "Dune"
+          "title": "Dune",
+          "url": "https://www.imdb.com/title/tt1160419/"
         },
         {
-          "title": "Dune 2"
+          "title": "Dune 2",
+          "url": "https://www.imdb.com/title/tt15239678/"
         },
         {
-          "title": "Interstellar"
+          "title": "Interstellar",
+          "url": "https://www.imdb.com/title/tt0816692/"
         },
         {
-          "title": "Oppenheimer"
+          "title": "Oppenheimer",
+          "url": "https://www.imdb.com/title/tt15398776/"
         },
         {
-          "title": "Snowden"
+          "title": "Snowden",
+          "url": "https://www.imdb.com/title/tt3774114/"
         },
         {
-          "title": "The Creator"
+          "title": "The Creator",
+          "url": "https://www.imdb.com/title/tt11858890/"
         },
         {
-          "title": "Chappie"
+          "title": "Chappie",
+          "url": "https://www.imdb.com/title/tt1823672/"
         },
         {
-          "title": "Ex Machina"
+          "title": "Ex Machina",
+          "url": "https://www.imdb.com/title/tt0470752/"
         },
         {
-          "title": "Predestination"
+          "title": "Predestination",
+          "url": "https://www.imdb.com/title/tt2397535/"
         },
         {
-          "title": "Parasite (2019)"
+          "title": "Parasite (2019)",
+          "url": "https://www.imdb.com/title/tt6751668/"
         },
         {
-          "title": "Polar"
+          "title": "Polar",
+          "url": "https://www.imdb.com/title/tt4139588/"
         }
       ]
     },

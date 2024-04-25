@@ -44,7 +44,7 @@ export default function MoviesDisplay({ movies, heading, description }: {
             <FlippableCardBack className="bg-slate-800/60 h-[23rem]">
               <div className="prose prose-invert text-sm">
                 <h3 className="text-md text-center">
-                  <Link href={ '' } target="_blank">{ movie.title } ({ movie.releaseDate.getFullYear() })</Link>
+                  <Link href={ movie.url } target="_blank">{ movie.title } ({ movie.releaseDate.getFullYear() })</Link>
                 </h3>
                 <ScrollArea className="h-[18rem]">
                   { movie.overview }
