@@ -87,7 +87,19 @@
         "title": "Junior Backend Developer",
         "timePeriod": "2019 - 2023",
         "institution": "Tecsis S.r.l.",
-        "description": "At the start of my career I worked on the development of backend solutions using C# and frameworks like Entity Framework and ASP.NET Boilerplate. I've also worked on the development and maintenance of an infrastructure based on microservices, using Docker and Kubernetes in the Azure Cloud environment. Over the course of this first work experience, I also acquired experience in the development of integration solutions with third-party services, such as PagoPA and Moodle. Even if my principal focus was on the backend, I've also started approaching the frontend world, acquiring some basic knowledge of Javascript, Typescript and the React library."
+        "description": "At the start of my career I worked on the development of backend solutions using C# and frameworks like Entity Framework and ASP.NET Boilerplate. I've also worked on the development and maintenance of an infrastructure based on microservices, using Docker and Kubernetes in the Azure Cloud environment. Over the course of this first work experience, I also acquired experience in the development of integration solutions with third-party services, such as PagoPA and Moodle. Even if my principal focus was on the backend, I've also started approaching the frontend world, acquiring some basic knowledge of Javascript, Typescript and the React library.",
+        "tags": [
+          "C#",
+          ".NET",
+          "Entity Framework",
+          "ASP.NET Boilerplate",
+          "Docker",
+          "Kubernetes",
+          "Azure Cloud",
+          "Javascript",
+          "Typescript",
+          "React"
+        ]
       }
     ],
     "education": [
