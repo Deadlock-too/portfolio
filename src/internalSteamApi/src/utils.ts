@@ -6,7 +6,7 @@ const reg = /<h1>(.*)<\/h1>/;
  * @param options
  * @returns
  */
-export async function fetch(url, options) {
+export async function fetch(url: string, options: any) : Promise<any> {
     // console.log(url);
     const res = await nodeFetch(url, options);
     if (res.status === 400) {
@@ -21,7 +21,7 @@ export async function fetch(url, options) {
 // App IDs are positive integers that are divisible by 10
 const reID = /^\d{17}$/;
 // User IDs are 17 digit numbers
-export function assertID(ids) {
+export function assertID(ids: string | string[]) : void {
     if (!Array.isArray(ids))
         ids = [ids];
     if (ids.some(id => !reID.test(id)))
