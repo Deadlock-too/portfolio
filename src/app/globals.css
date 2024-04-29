@@ -106,6 +106,7 @@
 }
 
 .song-card-animate-spin {
+  @apply animate-spin;
   animation: spin 4s linear infinite;
 }
 
