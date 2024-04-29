@@ -137,11 +137,13 @@ async function GetGames({ steamApi, secrets, games }: {
   games: Game[]
 }) {
   data.passions.find((passion) => passion.name === 'Gaming')?.items?.forEach((item) => {
-    item = item as { appId: number, name: string, url: string }
+    const typedItem = item as { appId: number, name: string, url: string, logoPosition?: 'left' | 'right', logoSize?: 'sm' | 'md' | 'lg' }
     games.push({
-      appId: item.appId,
-      title: item.name,
-      url: item.url
+      appId: typedItem.appId,
+      title: typedItem.name,
+      url: typedItem.url,
+      logoPosition: typedItem.logoPosition,
+      logoSize: typedItem.logoSize,
     })
   })
 
@@ -154,9 +156,9 @@ async function GetGames({ steamApi, secrets, games }: {
         game.timePlayed = detail.minutes
         game.lastPlayed = detail.lastPlayedAt
         game.image = <Image
-          src={ detail.game.coverURL }
-          width={ 120 }
-          height={ 120 }
+          src={ detail.game.backgroundURL }
+          width={ 800 }
+          height={ 800 }
           quality={ 90 }
           alt={ game.title }
         />

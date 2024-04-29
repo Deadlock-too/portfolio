@@ -76,22 +76,22 @@ export default function MusicDisplay({ songs, heading, description }: {
           songs.map((song, index) => (
             <Card
               key={ index }
-              className={ clsx('flex flex-row p-4 -ml-6 gap-2 hover:opacity-100 hover:scale-105 transition-all ease-in-out duration-300',
+              className={ clsx('song-card flex flex-row p-4 -ml-6 gap-2 hover:opacity-100 hover:scale-105 transition-all ease-in-out duration-300',
                 playing === index ? 'bg-slate-700 opacity-80 scale-105' : 'bg-slate-800 opacity-60'
               ) }
             >
-              <div className="song-index">
+              <div className="song-card-index">
                 <p
                   className="text-sm bg-black text-center content-center border-2 rounded-[50%] border-slate-500 w-6 h-6 -ml-2 -mt-2 text-slate-100"
                 >{ index + 1 }</p>
               </div>
               <div
-                className="song-entry group border-2 m-1 rounded-2xl border-slate-500 overflow-hidden"
+                className="song-card-entry group border-2 m-1 rounded-2xl border-slate-500 overflow-hidden"
                 onClick={ () => {
                   setSongPlaying(index)
                 } }
               >
-                <div className="song-play text-sky-500">
+                <div className="song-card-play text-sky-500">
                   {
                     playing === index ?
                       <BiPause className="h-16 w-16 opacity-0 group-hover:opacity-100"/> :
@@ -102,7 +102,7 @@ export default function MusicDisplay({ songs, heading, description }: {
                   { song.image }
                 </div>
                 <div
-                  className={ clsx('song-bar bg-sky-500 h-1.5 w-full ',
+                  className={ clsx('song-card-bar bg-sky-500 h-1.5 w-full ',
                     playing === index ? 'opacity-100' : 'opacity-0') }
                   style={ { transform: `translateX(-${ 100 - (time / 30 * 100) }%)` } }
                 />
@@ -118,7 +118,7 @@ export default function MusicDisplay({ songs, heading, description }: {
                   src={ Vinyl }
                   alt="Vinyl"
                   className={
-                    clsx('h-12 w-12 md:h-14 md:w-14 invert animate-spin transition-all ease-in-out duration-300',
+                    clsx('h-12 w-12 md:h-14 md:w-14 invert song-card-animate-spin transition-all ease-in-out duration-300',
                       playing === index ? 'opacity-100' : 'opacity-0'
                     )
                   }

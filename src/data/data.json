@@ -125,42 +125,58 @@
         {
           "name": "Horizon Forbidden West",
           "appId": 2420110,
-          "url": "https://store.steampowered.com/app/2420110/Horizon_Forbidden_West_Complete_Edition/"
+          "url": "https://store.steampowered.com/app/2420110/Horizon_Forbidden_West_Complete_Edition/",
+          "logoPosition": "right",
+          "logoSize": "md"
         },
         {
           "name": "Marvel's Spider-Man Remastered",
           "appId": 1817070,
-          "url": "https://store.steampowered.com/app/1817070/Marvels_SpiderMan_Remastered/"
+          "url": "https://store.steampowered.com/app/1817070/Marvels_SpiderMan_Remastered/",
+          "logoPosition": "left",
+          "logoSize": "sm"
         },
         {
           "name": "Elden Ring",
           "appId": 1245620,
-          "url": "https://store.steampowered.com/app/12456020/ELDEN_RING/"
+          "url": "https://store.steampowered.com/app/12456020/ELDEN_RING/",
+          "logoPosition": "right",
+          "logoSize": "lg"
         },
         {
           "name": "Hollow Knight",
           "appId": 367520,
-          "url": "https://store.steampowered.com/app/367520/Hollow_Knight/"
+          "url": "https://store.steampowered.com/app/367520/Hollow_Knight/",
+          "logoPosition": "left",
+          "logoSize": "md"
         },
         {
           "name": "Hades",
           "appId": 1145360,
-          "url": "https://store.steampowered.com/app/1145360/Hades/"
+          "url": "https://store.steampowered.com/app/1145360/Hades/",
+          "logoPosition": "right",
+          "logoSize": "md"
         },
         {
           "name": "Ori and the Will of the Wisps",
           "appId": 1057090,
-          "url": "https://store.steampowered.com/app/1057090/Ori_and_the_Will_of_the_Wisps/"
+          "url": "https://store.steampowered.com/app/1057090/Ori_and_the_Will_of_the_Wisps/",
+          "logoPosition": "left",
+          "logoSize": "md"
         },
         {
           "name": "Baldur's Gate 3",
           "appId": 1086940,
-          "url": "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/"
+          "url": "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/",
+          "logoPosition": "right",
+          "logoSize": "md"
         },
         {
           "name": "Dark Souls III",
           "appId": 374320,
-          "url": "https://store.steampowered.com/app/374320/DARK_SOULS_III/"
+          "url": "https://store.steampowered.com/app/374320/DARK_SOULS_III/",
+          "logoPosition": "left",
+          "logoSize": "lg"
         }
       ]
     },

@@ -4,10 +4,10 @@
 
 .background-gradient {
   background: radial-gradient(
-    circle at top center,
-    hsla(222, 80%, 60%, 0.5) 0%,
-    hsla(222, 0%, 0%, 0) 50%,
-    hsla(222, 0%, 0%, 0) 100%
+      circle at top center,
+      hsla(222, 80%, 60%, 0.5) 0%,
+      hsla(222, 0%, 0%, 0) 50%,
+      hsla(222, 0%, 0%, 0) 100%
   );
 }
 
@@ -77,12 +77,16 @@
   }
 }
 
-.song-index {
+.song-card {
+  box-shadow: 0 11px 25px -1px rgba(0, 0, 0, 0.17);
+}
+
+.song-card-index {
   position: absolute;
   z-index: 50;
 }
 
-.song-play {
+.song-card-play {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -90,18 +94,18 @@
   z-index: 50;
 }
 
-.song-entry {
+.song-card-entry {
   position: relative;
 }
 
-.song-bar {
+.song-card-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 10;
 }
 
-.animate-spin {
+.song-card-animate-spin {
   animation: spin 4s linear infinite;
 }
 
@@ -112,16 +116,17 @@
 }
 
 /* entire container, keeps perspective */
-.flip-container {
+.flippable-card-container {
   perspective: inherit;
 }
+
 /* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
+.flippable-card-container:hover .flippable-card-flipper, .flippable-card-container.hover .flippable-card-flipper {
   transform: rotateY(180deg);
 }
 
 /* flip speed goes here */
-.flipper {
+.flippable-card-flipper {
   transition: 1s;
   transform-style: preserve-3d;
 
@@ -129,23 +134,24 @@
 }
 
 /* hide back of pane during swap */
-.front, .back {
+.flippable-card-front, .flippable-card-back {
   backface-visibility: hidden;
 
   position: absolute;
   top: 0;
   left: 0;
+  box-shadow: 0 11px 25px -1px rgba(0, 0, 0, 0.17);
 }
 
 /* front pane, placed above back */
-.front {
+.flippable-card-front {
   z-index: 2;
   /* for firefox 31 */
   transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
-.back {
+.flippable-card-back {
   transform: rotateY(180deg);
 }
 
@@ -171,4 +177,111 @@
   .movie-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+}
+
+.folding-card-container {
+  @apply relative;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply origin-bottom;
+  @apply cursor-pointer;
+}
+
+.folding-card-content {
+  @apply absolute;
+  @apply w-full;
+  @apply h-[100px];
+  @apply origin-bottom;
+  @apply duration-500;
+  @apply rounded-xl;
+  transform-style: preserve-3d;
+}
+
+.folding-card-inner-first {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[100px];
+  backface-visibility: hidden;
+  box-shadow: 0 0 25px -1px rgba(0, 0, 0, 0.17);
+}
+
+.folding-card-outer {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[100px];
+  backface-visibility: hidden;
+  box-shadow: 0 0 3px 0 rgba(132, 132, 132, 0.15);
+}
+
+.folding-card-inner-second {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[100px];
+  @apply origin-center;
+  @apply bottom-[2px];
+  backface-visibility: hidden;
+  transform: rotate3d(1, 0, 0, -180deg);
+}
+
+.folding-card-inner-second-content {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[100px];
+  box-shadow: 0 11px 25px -1px rgba(0, 0, 0, 0.17);
+}
+
+.folding-card-inner-third {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[50px];
+  @apply bottom-[-2px];
+  @apply origin-bottom;
+  transform-style: preserve-3d;
+  transition: 0.2s;
+}
+
+.folding-card-inner-third-and-fourth-content-wrapper {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[50px];
+  @apply origin-center;
+  backface-visibility: hidden;
+  transform: rotate3d(1, 0, 0, -180deg);
+}
+
+.folding-card-inner-third-content {
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[50px];
+  position: absolute;
+  box-shadow: 0 11px 25px -1px rgba(0, 0, 0, 0.17);
+}
+
+.folding-card-inner-fourth-content {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[50px];
+  @apply bottom-[2px];
+  @apply origin-center;
+  transform: rotate3d(1, 0, 0, -180deg);
+  backface-visibility: hidden;
+  box-shadow: 0 11px 25px -1px rgba(0, 0, 0, 0.17);
+}
+
+.folding-card-inner-fourth {
+  @apply absolute;
+  @apply w-full;
+  @apply rounded-xl;
+  @apply h-[50px];
+  @apply origin-bottom;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: 0.2s;
 }

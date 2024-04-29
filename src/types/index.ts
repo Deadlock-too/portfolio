@@ -21,6 +21,8 @@ export type Game = {
   title: string
   image?: React.ReactNode
   logo?: React.ReactNode
+  logoPosition?: 'left' | 'right'
+  logoSize?: 'sm' | 'md' | 'lg'
   timePlayed?: number
   lastPlayed?: Date
   url: string
