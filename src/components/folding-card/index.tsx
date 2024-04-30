@@ -14,7 +14,7 @@ const FoldingCardContainer = forwardRef<HTMLDivElement, FoldingCardProps>(
     return (
       <div
         ref={ ref }
-        className={ clsx('folding-card-container',
+        className={ clsx('folding-card-container', className,
           isActive ? 'h-[300px]' : 'h-[100px]'
         ) }
         style={ {

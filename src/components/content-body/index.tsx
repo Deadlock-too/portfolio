@@ -2,6 +2,7 @@ import Boundary from '@/components/boundary'
 import Heading from '@/components/heading'
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa6'
+import { formatDate } from '@/utils'
 
 export default function ContentBody({ contentType, title, tags, date, content, link }: {
   contentType: 'project' | 'blog'
@@ -11,18 +12,6 @@ export default function ContentBody({ contentType, title, tags, date, content, l
   content: string
   link?: string
 }) {
-  function formatDate(date: Date) {
-    if (date === undefined) return
-
-    const dateOptions: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }
-    return new Intl.DateTimeFormat('en-US', dateOptions).format(new Date(date))
-  }
-
   return (
     <Boundary as="article" className="text-focus-in">
       <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">

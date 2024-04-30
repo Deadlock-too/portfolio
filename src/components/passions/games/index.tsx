@@ -5,35 +5,50 @@ import Heading from '@/components/heading'
 import CardContainer from '@/components/card-container'
 import Link from 'next/link'
 import {
-  FoldingCardInnerSecond, FoldingCardInnerSecondContent,
+  FoldingCardInnerSecond,
+  FoldingCardInnerSecondContent,
   FoldingCard,
   FoldingCardContainer,
   FoldingCardContent,
   FoldingCardInnerFirst,
-  FoldingCardOuter, FoldingCardInnerThird, FoldingCardInnerThirdAndFourthContentWrapper, FoldingCardInnerFourthContent, FoldingCardInnerThirdContent, FoldingCardInnerFourth
+  FoldingCardOuter,
+  FoldingCardInnerThird,
+  FoldingCardInnerThirdAndFourthContentWrapper,
+  FoldingCardInnerFourthContent,
+  FoldingCardInnerThirdContent,
+  FoldingCardInnerFourth
 } from '@/components/folding-card'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { FaSteam } from 'react-icons/fa6'
+import { formatDate } from '@/utils'
 
-export default function GamesDisplay({ games, heading, description }: {
+export default function GamesDisplay({ games, heading, description, isMobile }: {
   games: Game[],
   heading: { name: string, icon: string },
-  description: string
+  description: string,
+  isMobile: boolean
 }) {
   const [ activeCard, setActiveCard ] = useState<number | null>(null)
+  const [ hoveredCard, setHoveredCard ] = useState<number | null>(null)
 
-  function formatDate(date: Date) {
-    if (date === undefined) return
+  const containerRef = useRef<(HTMLDivElement | null)[]>([])
 
-    const dateOptions: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+  useEffect(() => {
+    containerRef.current = containerRef.current.slice(0, games.length)
+
+    containerRef.current.forEach((container, index) => {
+      container?.addEventListener('mouseenter', () => setHoveredCard(index))
+      container?.addEventListener('mouseleave', () => setHoveredCard(null))
+    })
+
+    return () => {
+      containerRef.current.forEach((container, index) => {
+        container?.removeEventListener('mouseenter', () => setHoveredCard(index))
+        container?.removeEventListener('mouseleave', () => setHoveredCard(null))
+      })
     }
-    return new Intl.DateTimeFormat('en-US', dateOptions).format(new Date(date))
-  }
+  })
 
   function formatTimePlayed(time: number) {
     const hours = Math.floor((time / 60))
@@ -46,16 +61,18 @@ export default function GamesDisplay({ games, heading, description }: {
       <Heading as="h3" size="sm">
         { heading.icon } { heading.name }
       </Heading>
-      <CardContainer description={ description } className="md:grid-cols-2 grid-cols-1">
+      <CardContainer description={ description } className="md:grid-cols-2 grid-cols-1 -ml-[18px] mr-[6px] md:-ml-6 md:mr-6">
         {
           games.map((game, index) => {
             const isActive = activeCard === index
+            const isHovered = hoveredCard === index
 
             return (
-              <FoldingCard key={ index } className={ clsx('md:-ml-6 mr-6 transition-transform',
-                isActive ? '' : 'hover:scale-105 hover:z-10'
+              <FoldingCard key={ index } className={ clsx('transition-transform',
+                (isActive || !isHovered) && !isMobile ? '' : 'hover:scale-105 hover:z-10'
               ) }>
                 <FoldingCardContainer
+                  ref={ el => { containerRef.current[index] = el } }
                   key={ index }
                   isActive={ isActive }
                   handleActive={ (value) => setActiveCard(value ? index : null) }>
@@ -101,7 +118,7 @@ export default function GamesDisplay({ games, heading, description }: {
                             className="relative flex w-fit items-center justify-center overflow-hidden py-2 transition-transform ease-out">
                             <span
                               className="absolute inset-0 z-0 h-1 translate-y-7 -translate-x-44 bg-sky-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0"/>
-                            <p className="text-sm">Check it out on Steam:</p>
+                            <p className="md:text-sm text-xs">Get it on Steam:</p>
                           </div>
                           <FaSteam className="transition-transform hover:scale-125 hover:text-sky-500"/>
                         </Link>

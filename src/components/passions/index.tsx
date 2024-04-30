@@ -9,6 +9,8 @@ import SteamAPI from '@/internalSteamApi/index'
 import { SpotifyApi } from '@spotify/web-api-ts-sdk'
 import Image from 'next/image'
 import React from 'react'
+import { headers } from 'next/headers'
+import { isMobile } from '@/utils'
 
 type PassionsProps = {
   heading: string
@@ -30,6 +32,10 @@ export default async function Passions({ heading, items }: PassionsProps) {
     steam_id: process.env.STEAM_ID ?? '',
     tmdb_api_key: process.env.TMDB_API_KEY ?? ''
   }
+
+  const userAgent = headers().get('user-agent') || ""
+  const mobile = isMobile(userAgent)
+
 
   const steamApi = new SteamAPI(secrets.steam_web_api_key)
   const spotifyApi = SpotifyApi.withClientCredentials(
@@ -83,6 +89,7 @@ export default async function Passions({ heading, items }: PassionsProps) {
                       heading={ { name: item.name, icon: item.icon } }
                       games={ games }
                       description={ item.description }
+                      isMobile={ mobile }
                     />
                   case 'Movies':
                     if (movies.length === 0) return null
