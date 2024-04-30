@@ -34,4 +34,10 @@ export type Movie = {
   releaseDate: Date
   overview: string
   image: React.ReactNode
+  genres: Genre[]
+}
+
+export type Genre = {
+  id: number
+  name: string
 }

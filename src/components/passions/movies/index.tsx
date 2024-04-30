@@ -35,14 +35,24 @@ export default function MoviesDisplay({ movies, heading, description }: {
               </div>
             </FlippableCardFront>
             <FlippableCardBack className="bg-slate-800/60 h-[23rem]">
-              <div className="prose prose-invert text-sm">
+              <div className="prose prose-invert text-sm justify-between h-full">
                 <h3 className="text-md text-center">
                   <Link href={ movie.url } target="_blank">{ movie.title } ({ movie.releaseDate.getFullYear() })</Link>
                 </h3>
-                <ScrollArea className="h-[18rem]">
+                <ScrollArea className="h-full max-h-[16.5rem] border-b-[1px]">
                   { movie.overview }
                   <ScrollBar orientation="vertical"/>
                 </ScrollArea>
+                <div className="flex flex-wrap-reverse items-center justify-center gap-3 pt-3">
+                  { movie.genres.map((genre, index) => (
+                    <span
+                      className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all cursor-default ease-in-out hover:scale-125"
+                      key={ index }
+                    >
+                    { genre.name }
+                  </span>
+                  )) }
+                </div>
               </div>
             </FlippableCardBack>
           </FlippableCard>

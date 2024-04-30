@@ -196,11 +196,25 @@ async function GetMovies({ secrets, sources, movies }: {
   sources: any[],
   movies: Movie[]
 }) {
+  const genres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${ secrets.tmdb_api_key }`)
+    .then(async (response) => {
+      return response.json().then((data) => {
+        return data.genres as { id: number, name: string }[]
+      })
+    })
+
   return Promise.all((sources as { title: string, url: string }[]).map(async (movie, index) => {
     return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ secrets.tmdb_api_key }&query=${ movie.title }`)
       .then((response) => {
         response.json().then((data) => {
           if (data.results.length === 0) return
+
+          const getGenres = data.results[0].genre_ids.map((genreId: number, index: number) => {
+            if (index > 2) return
+            const genre = genres.find((genre) => genre.id === genreId)
+            if (genre?.name === 'Science Fiction') genre.name = 'Sci-Fi'
+            return genre
+          })
 
           movies[index] = {
             url: movie.url,
@@ -213,7 +227,8 @@ async function GetMovies({ secrets, sources, movies }: {
               height={ 240 }
               quality={ 90 }
               alt={ movie.title }
-            />
+            />,
+            genres: getGenres
           }
         })
       })
