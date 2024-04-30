@@ -69,8 +69,8 @@ export default function GamesDisplay({ games, heading, description, isMobile }: 
 
             return (
               <FoldingCard key={ index } className={ clsx('transition-transform',
-                (isActive || !isHovered) && !isMobile ? '' : 'hover:scale-105 hover:z-10',
-                isActive ? 'scale-105' : ''
+                (isActive || !isHovered) && !isMobile ? '' : 'md:hover:scale-105 md:hover:z-10',
+                isActive ? 'scale-105 z-10' : ''
               ) }>
                 <FoldingCardContainer
                   ref={ el => { containerRef.current[index] = el } }
