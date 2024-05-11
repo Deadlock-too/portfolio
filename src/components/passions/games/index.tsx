@@ -61,7 +61,7 @@ export default function GamesDisplay({ games, heading, description, isMobile }: 
       <Heading as="h3" size="sm">
         { heading.icon } { heading.name }
       </Heading>
-      <CardContainer description={ description } className="md:grid-cols-2 grid-cols-1 -ml-[18px] mr-[6px] md:-ml-6 md:mr-6">
+      <CardContainer description={ description } className="md:grid-cols-2 grid-cols-1 -ml-[18px] mr-[6px] gap-x-4 md:-ml-9 md:mr-2.5">
         {
           games.map((game, index) => {
             const isActive = activeCard === index
@@ -69,8 +69,8 @@ export default function GamesDisplay({ games, heading, description, isMobile }: 
 
             return (
               <FoldingCard key={ index } className={ clsx('transition-transform',
-                (isActive || !isHovered) && !isMobile ? '' : 'md:hover:scale-105 md:hover:z-10',
-                isActive ? 'scale-105 z-10' : ''
+                (isActive || !isHovered) && !isMobile ? '' : 'md:hover:scale-100 md:hover:z-10',
+                isActive ? 'scale-100 z-10' : 'scale-95'
               ) }>
                 <FoldingCardContainer
                   ref={ el => { containerRef.current[index] = el } }

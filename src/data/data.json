@@ -5,7 +5,7 @@
       "title": "Another Password Manager",
       "description": "Another-PasswordManager is an opensource password manager written using Typescript, React, Tailwind and Electron.",
       "tags": [
-        "Typescript",
+        "TypeScript",
         "Tailwind CSS",
         "Electron",
         "React"
@@ -19,7 +19,7 @@
       "title": "Creative Hobbies E-Commerce Website",
       "description": "Creative Hobbies is an online e-commerce store written using Typescript, React, Tailwind and Next.js.",
       "tags": [
-        "Typescript",
+        "TypeScript",
         "Tailwind CSS",
         "Next.js",
         "React"
@@ -33,7 +33,7 @@
       "title": "Portfolio Website",
       "description": "This is my portfolio website where I'll post all my accomplishments and my projects. I've made it using Typescript, React, Tailwind and Next.js.",
       "tags": [
-        "Typescript",
+        "TypeScript",
         "Tailwind CSS",
         "Next.js",
         "React",
@@ -85,9 +85,10 @@
     "workExperience": [
       {
         "title": "Junior Backend Developer",
-        "timePeriod": "2019 - 2023",
+        "start": "08/01/2019",
+        "end": "06/04/2023",
         "institution": "Tecsis S.r.l.",
-        "description": "At the start of my career I worked on the development of backend solutions using C# and frameworks like Entity Framework and ASP.NET Boilerplate. I've also worked on the development and maintenance of an infrastructure based on microservices, using Docker and Kubernetes in the Azure Cloud environment. Over the course of this first work experience, I also acquired experience in the development of integration solutions with third-party services, such as PagoPA and Moodle. Even if my principal focus was on the backend, I've also started approaching the frontend world, acquiring some basic knowledge of Javascript, Typescript and the React library.",
+        "description": "At the start of my career I worked on the development of backend solutions using C# and frameworks like Entity Framework and ASP.NET Boilerplate. I've also worked on the development and maintenance of an infrastructure based on microservices, using Docker and Kubernetes in the Azure Cloud environment. Over the course of this first work experience, I also gained experience in developing integration solutions with third-party services, such as PagoPA and Moodle, using SOAP and REST APIs. Even if my principal focus was on the backend, I've also started approaching the frontend world, acquiring some basic knowledge of Javascript, Typescript and the React library.",
         "tags": [
           "C#",
           ".NET",
@@ -96,8 +97,8 @@
           "Docker",
           "Kubernetes",
           "Azure Cloud",
-          "Javascript",
-          "Typescript",
+          "JavaScript",
+          "TypeScript",
           "React"
         ]
       }
@@ -105,7 +106,8 @@
     "education": [
       {
         "title": "High School Diploma - Business Information Systems",
-        "timePeriod": "2013 - 2018",
+        "start": "01/01/2013",
+        "end": "01/01/2018",
         "institution": "ITC P.F. Calvi",
         "description": "During my high school years I studied the basics of computer science, learning the fundamentals of programming and the use of the main office automation tools. I also studied the basics of economics and business management, acquiring the necessary knowledge to understand the functioning of a company and the role of information systems within it. During the last year of high school, I also had the opportunity to do an internship at a local company, where I had the opportunity to put into practice the knowledge acquired during the course of study."
       }

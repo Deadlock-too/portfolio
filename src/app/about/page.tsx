@@ -19,9 +19,9 @@ export default async function About() {
     <>
       <AboutMe/>
       <TechList/>
-      <Experience heading={ 'Experience' } items={ experience.workExperience }/>
-      <Experience heading={ 'Education' } items={ experience.education }/>
-      <Suspense fallback={ <PassionsSkeleton /> }>
+      <Experience heading={ 'Experience' } items={ experience.workExperience } shortDate={false}/>
+      <Experience heading={ 'Education' } items={ experience.education } shortDate={true}/>
+      <Suspense fallback={ <PassionsSkeleton/> }>
         <Passions
           heading={ 'My passions' }
           items={ passions }
