@@ -52,7 +52,7 @@ export default function TechList() {
         techs.map((tech, index) => (
           <div
             key={ index }
-            className="text-focus-in tech-row mb-8 flex items-center justify-center gap-4 text-slate-700"
+            className="text-focus-in tech-row mb-8 flex items-center justify-center gap-4 text-white/20"
             aria-label={ tech.name }
           >
             { Array.from({ length: 45 }, (_, index) => (

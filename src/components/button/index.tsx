@@ -27,7 +27,7 @@ export default function Button({
       target={target}
     >
       <span
-        className="absolute inset-0 z-0 h-full translate-y-9 bg-sky-500 transition-transform duration-300 ease-in-out group-hover:translate-y-0"/>
+        className="absolute inset-0 z-0 h-full translate-y-9 bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-y-0"/>
       <span className="relative flex items-center text-black justify-center gap-2">
         { label } { showIcon && <MdArrowOutward className="inline-block"/> }
       </span>

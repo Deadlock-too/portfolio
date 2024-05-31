@@ -77,7 +77,7 @@ export default function GamesDisplay({ games, heading, description, isMobile }: 
                   key={ index }
                   isActive={ isActive }
                   handleActive={ (value) => setActiveCard(value ? index : null) }>
-                  <FoldingCardInnerFirst className="bg-slate-800/60 overflow-hidden">
+                  <FoldingCardInnerFirst className="bg-black/80 border-2 overflow-hidden">
                     <div className="overflow-hidden my-auto content-center">
                       { game.image }
                     </div>
@@ -97,7 +97,7 @@ export default function GamesDisplay({ games, heading, description, isMobile }: 
                         { game.logo }
                       </div>
                     </FoldingCardOuter>
-                    <FoldingCardInnerSecond className="bg-slate-800/60">
+                    <FoldingCardInnerSecond className="bg-black/80  border-2">
                       <FoldingCardInnerSecondContent className="flex flex-row items-center justify-between px-4">
                         <div
                           className={ clsx('content-center',
@@ -116,25 +116,25 @@ export default function GamesDisplay({ games, heading, description, isMobile }: 
                           onClick={ (event) => event.stopPropagation() }
                         >
                           <div
-                            className="relative flex w-fit items-center justify-center overflow-hidden py-2 transition-transform ease-out">
+                            className="relative text-white flex w-fit items-center justify-center overflow-hidden py-2 transition-transform ease-out">
                             <span
-                              className="absolute inset-0 z-0 h-1 translate-y-7 -translate-x-44 bg-sky-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0"/>
+                              className="absolute inset-0 z-0 h-1 translate-y-7 -translate-x-44 bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0"/>
                             <p className="md:text-sm text-xs">Get it on Steam:</p>
                           </div>
-                          <FaSteam className="transition-transform hover:scale-125 hover:text-sky-500"/>
+                          <FaSteam className="transition-transform text-white hover:scale-125 hover:text-yellow-500"/>
                         </Link>
                       </FoldingCardInnerSecondContent>
                       <FoldingCardInnerThird isActive={ isActive }>
                         <FoldingCardInnerThirdAndFourthContentWrapper>
-                          <FoldingCardInnerThirdContent className="bg-slate-800/60 flex flex-row justify-center">
-                            <div className="w-full flex flex-row justify-between px-4 items-center">
+                          <FoldingCardInnerThirdContent className="bg-black/80 border-2 flex flex-row justify-center">
+                            <div className="w-full text-white flex flex-row justify-between px-4 items-center">
                               <p>Time played:</p>
                               <p className="text-xl">{ game.timePlayed ? formatTimePlayed(game.timePlayed) : '' }</p>
                             </div>
                           </FoldingCardInnerThirdContent>
-                          <FoldingCardInnerFourth isActive={ isActive } className="bg-slate-800">
-                            <FoldingCardInnerFourthContent className="bg-slate-800/60 flex flex-row justify-center">
-                              <div className="w-full flex flex-row justify-between px-4 items-center">
+                          <FoldingCardInnerFourth isActive={ isActive } className="bg-black">
+                            <FoldingCardInnerFourthContent className="bg-black/80 border-2 flex flex-row justify-center">
+                              <div className="w-full text-white flex flex-row justify-between px-4 items-center">
                                 <p>Last played:</p>
                                 <p className="text-md">{ game.lastPlayed ? formatDate(game.lastPlayed) : '' }</p>
                               </div>

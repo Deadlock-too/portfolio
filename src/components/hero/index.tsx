@@ -72,17 +72,17 @@ export default function Hero() {
             className="mb-8 text-[clamp(3rem,24vw,24rem)] md:text-[clamp(3rem,10vw,10rem)] font-extrabold leading-none tracking-tighter"
             aria-label={ `${ firstName } ${ lastName }` }
           >
-            <span className="block text-slate-300">{ renderLetters(firstName) }</span>
+            <span className="block text-yellow-200">{ renderLetters(firstName) }</span>
             {
               secondName && (
-                <span className="-mt-[.2em] block text-slate-400">{ renderLetters(secondName) }</span>
+                <span className="-mt-[.2em] block text-yellow-400">{ renderLetters(secondName) }</span>
               )
             }
-            <span className="-mt-[.2em] block text-slate-500">{ renderLetters(lastName) }</span>
+            <span className="-mt-[.2em] block text-yellow-600">{ renderLetters(lastName) }</span>
           </h1>
           <span
             className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 md:text-4xl">
-            Creative Developer
+              Creative Developer
           </span>
         </div>
         <Shapes />

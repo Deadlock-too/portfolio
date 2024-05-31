@@ -61,7 +61,7 @@ export default function Avatar({
 
   return (
     <div ref={ component } className={ clsx('relative h-full w-full scale-90 md:scale-100', className) }>
-      <div className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0">
+      <div className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-white opacity-0">
         <Image
           src={ src }
           alt={ alt }

@@ -24,7 +24,7 @@ export default async function Footer({ settings }: {
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link
             href="/"
-            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-sky-500"
+            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-yellow-500"
           >
             {settings.data.name}
           </Link>
@@ -45,7 +45,7 @@ export default async function Footer({ settings }: {
                 <li>
                   <Link
                     className={clsx(
-                      "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-sky-500",
+                      "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-500",
                     )}
                     href={link}
                   >
@@ -68,7 +68,7 @@ export default async function Footer({ settings }: {
           {settings.data.github_link && (
             <Link
               href={settings.data.github_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-sky-500"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-500"
               aria-label={settings.data.name + " on GitHub"}
               target="_blank"
             >
@@ -78,7 +78,7 @@ export default async function Footer({ settings }: {
           {settings.data.twitter_link && (
             <Link
               href={settings.data.twitter_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-sky-500"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-500"
               aria-label={settings.data.name + " on Twitter"}
               target="_blank"
             >
@@ -88,7 +88,7 @@ export default async function Footer({ settings }: {
           {settings.data.linkedin_link && (
             <Link
               href={settings.data.linkedin_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-sky-500"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-500"
               aria-label={settings.data.name + " on LinkedIn"}
               target="_blank"
             >

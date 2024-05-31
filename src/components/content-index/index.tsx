@@ -13,7 +13,7 @@ type ContentIndexProps = {
 
 export default async function ContentIndex({ heading, description, contentType, viewMoreText, items }: ContentIndexProps) {
   return (
-    <Boundary>
+    <Boundary className="w-screen h-screen">
       <Heading size="xl" className="focus-in-expand mb-8">
         { heading }
       </Heading>

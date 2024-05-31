@@ -71,7 +71,7 @@ export default function NavBar({
                 >
                   <span
                     className={clsx(
-                      "absolute inset-0 z-0 h-full translate-y-12 rounded bg-sky-500 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
+                      "absolute inset-0 z-0 h-full translate-y-12 rounded bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
                       pathname.includes(link)
                         ? "translate-y-6"
                         : "translate-y-18",
@@ -159,7 +159,7 @@ function DesktopMenu({
             >
               <span
                 className={clsx(
-                  "absolute inset-0 z-0 h-full rounded bg-sky-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
+                  "absolute inset-0 z-0 h-full rounded bg-yellow-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
                   pathname.includes(link)
                     ? "translate-y-6"
                     : "translate-y-8",

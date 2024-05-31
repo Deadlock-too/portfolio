@@ -21,11 +21,11 @@ export default function MoviesDisplay({ movies, heading, description }: {
       <CardContainer description={ description } className="-ml-[18px] mr-[6px] md:-ml-6 md:mr-6 movie-grid">
         { movies.map((movie, index) => (
           <FlippableCard key={ index } className="h-[23rem] w-full">
-            <FlippableCardFront className="flex flex-col bg-slate-800/60 h-[23rem] p-4 w-full items-center justify-between">
+            <FlippableCardFront className="flex flex-col bg-black/80 border-2 h-[23rem] p-4 w-full items-center justify-between">
               <div className="rounded-2xl border-2 border-slate-500 overflow-hidden">
                 { movie.image }
               </div>
-              <div className="items-center text-center justify-between">
+              <div className="items-center text-center justify-between text-white">
                 <h3 className="text-xl">{ movie.title }</h3>
                 <h4 className="text-sm text-slate-500">{
                   formatDate(movie.releaseDate, {
@@ -34,7 +34,7 @@ export default function MoviesDisplay({ movies, heading, description }: {
                 </h4>
               </div>
             </FlippableCardFront>
-            <FlippableCardBack className="bg-slate-800/60 h-[23rem]">
+            <FlippableCardBack className="bg-black/80 border-2 h-[23rem]">
               <div className="prose prose-invert text-sm justify-between h-full">
                 <h3 className="text-md text-center">
                   <Link href={ movie.url } target="_blank">{ movie.title } ({ movie.releaseDate.getFullYear() })</Link>
