@@ -100,11 +100,11 @@ export default function Cursor({ isMobile }: { isMobile: boolean }) {
   }, [ isMobile, route ])
 
   return (
-    <div className="hidden md:block min-w-max">
+    <div className="block min-w-max">
       <div
         ref={ ref }
         style={ { transitionProperty: 'height, width, transform' } }
-        className="absolute top-0 left-0 w-8 h-8 z-[200] duration-150 -translate-x-4 border-2 rounded-full pointer-events-none border-stone-800 dark:border-stone-200 ring-1 ring-stone-200 dark:ring-stone-800 bg-yellow-400/20 flex justify-center items-center">
+        className="absolute -top-4 -left-4 w-8 h-8 z-[200] duration-150 -translate-x-4 border-2 rounded-full pointer-events-none border-stone-800 dark:border-stone-200 ring-1 ring-stone-200 dark:ring-stone-800 bg-yellow-400/20 flex justify-center items-center">
         <div className="w-2 h-2 rounded-full bg-stone-800 dark:bg-stone-200 ring-1 ring-stone-200 dark:ring-stone-800"/>
       </div>
     </div>

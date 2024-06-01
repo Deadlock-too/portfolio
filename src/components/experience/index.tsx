@@ -45,9 +45,9 @@ export default function Experience({ heading, items, shortDate }: ExperienceProp
               <Heading as="h3" size="sm">
                 { item.title }
               </Heading>
-              <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-yellow-500">
+              <div className="mt-1 flex flex-col-reverse md:flex-row w-fit md:items-center md:gap-1 text-2xl font-semibold tracking-tight text-yellow-500">
                 <span>{ start } - { end }</span>{ ' ' }
-                <span className="text-3xl font-extralight">/</span>{ ' ' }
+                <span className="text-3xl font-extralight hidden md:inline">/</span>{ ' ' }
                 <span>{ item.institution }</span>
               </div>
               <div className="prose prose-lg prose-invert mt-4">
