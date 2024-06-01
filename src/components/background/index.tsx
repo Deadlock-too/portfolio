@@ -1,15 +1,18 @@
 'use client'
 
 import { useMotionValue, motion, useMotionTemplate } from 'framer-motion'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { cn } from '@/utils'
+import Cursor from '@/components/cursor'
 
 export const Background = ({
   children,
+  isMobile,
   className,
   containerClassName,
 }: {
   children: React.ReactNode;
+  isMobile: boolean;
   className?: string;
   containerClassName?: string;
 }) => {
@@ -56,7 +59,10 @@ export const Background = ({
           `,
         } }
       />
-      <div className={ cn('relative z-20', className) }>{ children }</div>
+      <div className={ cn('relative z-20', className) }>
+        { children }
+        <Cursor isMobile={isMobile} />
+      </div>
     </div>
   )
 }

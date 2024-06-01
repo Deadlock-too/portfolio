@@ -57,7 +57,7 @@ export default function Experience({ heading, items, shortDate }: ExperienceProp
                 {
                   item.tags?.map((tag, index) => (
                     <span
-                      className="inline-flex items-center rounded-full border bg-black/80 px-2.5 py-0.5 text-xs font-semibold transition-all cursor-default ease-in-out hover:scale-125"
+                      className="inline-flex items-center rounded-full border bg-black/80 px-2.5 py-0.5 text-xs font-semibold transition-all ease-in-out hover:scale-125"
                       key={ index }
                     >
                       { tag }

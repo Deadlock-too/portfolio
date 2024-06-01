@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import * as THREE from 'three'
 import { Canvas, ThreeEvent, Vector3 } from '@react-three/fiber'
@@ -17,14 +17,19 @@ export function Shapes() {
         camera={ { position: [ 0, 0, 25 ], fov: 30, near: 1, far: 40 } }
       >
         <Suspense fallback={ null }>
-          <Geometries/>
-          <ContactShadows
-            position={ [ 0, -3.5, 0 ] }
-            opacity={ 0.65 }
-            scale={ 40 }
-            blur={ 1 }
-            far={ 9 }
-          />
+          <Geometries />
+          {
+            /* Removed due to dark background that would have mad the shadows useless */
+            /*
+            <ContactShadows
+              position={ [ 0, -3.5, 0 ] }
+              opacity={ 0.65 }
+              scale={ 40 }
+              blur={ 1 }
+              far={ 9 }
+            />
+            */
+          }
           <Environment preset="studio"/>
         </Suspense>
       </Canvas>

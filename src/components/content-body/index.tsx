@@ -22,7 +22,7 @@ export default function ContentBody({ contentType, title, tags, date, content, l
           {
             tags.map((tag, index) => (
               <span
-                className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-transform cursor-default ease-in-out hover:scale-125"
+                className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-transform ease-in-out hover:scale-125"
                 key={ index }>
                 { tag }
               </span>

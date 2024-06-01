@@ -185,7 +185,6 @@
   @apply w-full;
   @apply rounded-xl;
   @apply origin-bottom;
-  @apply cursor-pointer;
 }
 
 .folding-card-content {
@@ -285,4 +284,18 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transition: 0.2s;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: black;
+  background: yellow;
+}
+
+::selection {
+  color: black;
+  background: yellow;
+}
+
+* {
+  cursor: none;
 }

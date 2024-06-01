@@ -46,7 +46,7 @@ export default function MoviesDisplay({ movies, heading, description }: {
                 <div className="flex flex-wrap-reverse items-center justify-center gap-3 pt-3">
                   { movie.genres.map((genre, index) => (
                     <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all cursor-default ease-in-out hover:scale-125"
+                      className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all ease-in-out hover:scale-125"
                       key={ index }
                     >
                     { genre.name }

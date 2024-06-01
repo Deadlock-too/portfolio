@@ -4,9 +4,10 @@ import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import clsx from 'clsx'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import React from 'react'
 import { Background } from '@/components/background'
+import { isMobile } from '@/utils'
 
 const urbanist = Urbanist({ subsets: [ 'latin' ] })
 
@@ -29,10 +30,13 @@ export default function RootLayout({
   const cookiesList = cookies()
   const language = cookiesList.get('lang')?.value || 'it'
 
+  const userAgent = headers().get('user-agent') || ''
+  const mobile = isMobile(userAgent)
+
   return (
     <html lang="en" className="bg-black text-black">
     <body className={ clsx(urbanist.className, 'relative md:-mt-4 min-h-screen') }>
-    <Background className="min-w-full">
+    <Background className="min-w-full" isMobile={ mobile }>
       <Header currentLanguage={ language }/>
       { children }
       <Footer settings={ {
