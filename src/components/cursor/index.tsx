@@ -1,10 +1,12 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import { useLayoutEffect, useRef } from 'react'
-import { useRouter } from 'next/navigation'
 
 export default function Cursor({ isMobile }: { isMobile: boolean }) {
-  const route = useRouter()
+  const router = useRouter()
+  const pathname = usePathname()
+
   const ref = useRef<HTMLDivElement>(null)
 
   const increaseSize = () => {
@@ -29,7 +31,7 @@ export default function Cursor({ isMobile }: { isMobile: boolean }) {
     if (!isMobile) {
       document.body.style.cursor = 'none'
 
-      const elements = Array.from(document.querySelectorAll('a, button, input, textarea, link, [data-clickable="true"]'))
+      const elements = Array.from(document.querySelectorAll('a, button, input, textarea, link, li .list-item, div .song-card-play, [data-clickable="true"]'))
 
       let scrollX = 0
       let scrollY = 0
@@ -97,7 +99,7 @@ export default function Cursor({ isMobile }: { isMobile: boolean }) {
       }
     }
     document.body.style.cursor = 'auto'
-  }, [ isMobile, route ])
+  }, [ isMobile, router, pathname ])
 
   return (
     <div className="block min-w-max">
