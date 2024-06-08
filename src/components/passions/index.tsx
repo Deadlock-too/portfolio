@@ -33,7 +33,7 @@ export default async function Passions({ heading, items }: PassionsProps) {
     tmdb_api_key: process.env.TMDB_API_KEY ?? ''
   }
 
-  const userAgent = headers().get('user-agent') || ""
+  const userAgent = headers().get('user-agent') || ''
   const mobile = isMobile(userAgent)
 
 
@@ -67,47 +67,48 @@ export default async function Passions({ heading, items }: PassionsProps) {
 
   return (
     <Boundary>
-      <Heading as="h2" size="lg" className="focus-in-expand">
-        { heading }
-      </Heading>
-      {
-        items.map((item, index) => (
-          <div key={ index } className="text-focus-in ml-6 mt-8 md:ml-12 md:mt-16">
-            {
-              (() => {
-                switch (item.name) {
-                  case 'Music':
-                    if (songs.length === 0) return null
-                    return <MusicDisplay
-                      heading={ { name: item.name, icon: item.icon } }
-                      songs={ songs }
-                      description={ item.description }
-                    />
-                  case 'Gaming':
-                    if (games.length === 0) return null
-                    return <GamesDisplay
-                      heading={ { name: item.name, icon: item.icon } }
-                      games={ games }
-                      description={ item.description }
-                      isMobile={ mobile }
-                    />
-                  case 'Movies':
-                    if (movies.length === 0) return null
-                    return <MoviesDisplay
-                      heading={ { name: item.name, icon: item.icon } }
-                      movies={ movies }
-                      description={ item.description }
-                    />
-                }
-              })()
-            }
-          </div>
-        ))
-      }
+      <section>
+        <Heading as="h2" size="lg" className="focus-in-expand">
+          { heading }
+        </Heading>
+        {
+          items.map((item, index) => (
+            <section key={ index } className="text-focus-in ml-6 mt-8 md:ml-12 md:mt-16">
+              {
+                (() => {
+                  switch (item.name) {
+                    case 'Music':
+                      if (songs.length === 0) return null
+                      return <MusicDisplay
+                        heading={ { name: item.name, icon: item.icon } }
+                        songs={ songs }
+                        description={ item.description }
+                      />
+                    case 'Gaming':
+                      if (games.length === 0) return null
+                      return <GamesDisplay
+                        heading={ { name: item.name, icon: item.icon } }
+                        games={ games }
+                        description={ item.description }
+                        isMobile={ mobile }
+                      />
+                    case 'Movies':
+                      if (movies.length === 0) return null
+                      return <MoviesDisplay
+                        heading={ { name: item.name, icon: item.icon } }
+                        movies={ movies }
+                        description={ item.description }
+                      />
+                  }
+                })()
+              }
+            </section>
+          ))
+        }
+      </section>
     </Boundary>
   )
 }
-
 
 
 async function RetryOnFailure<T>(fn: () => Promise<T>, retries = 3): Promise<any> {
@@ -144,7 +145,13 @@ async function GetGames({ steamApi, secrets, games }: {
   games: Game[]
 }) {
   data.passions.find((passion) => passion.name === 'Gaming')?.items?.forEach((item) => {
-    const typedItem = item as { appId: number, name: string, url: string, logoPosition?: 'left' | 'right', logoSize?: 'sm' | 'md' | 'lg' }
+    const typedItem = item as {
+      appId: number,
+      name: string,
+      url: string,
+      logoPosition?: 'left' | 'right',
+      logoSize?: 'sm' | 'md' | 'lg'
+    }
     games.push({
       appId: typedItem.appId,
       title: typedItem.name,

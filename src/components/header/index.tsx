@@ -1,10 +1,6 @@
 import NavBar from '@/components/nav-bar'
 
-export default async function Header({
-  currentLanguage,
-}: {
-  currentLanguage: string
-}) {
+export default async function Header() {
   const pages = [
     {
       title: 'About',
@@ -22,18 +18,14 @@ export default async function Header({
 
   return (
     <header className="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4">
-      <NavBar currentLanguage={currentLanguage} settings={
+      <NavBar settings={
         {
           data: {
             name: 'Stefan Gabriel Craescu',
             nav_item: pages.map(({ title, href }) => ({ link: href, label: title })),
             cta_label: 'Contact',
-            cta_link: 'mailto:craescu.stefangabriel@gmail.com',
-          },
-          languages: [
-            { code: 'en', label: 'English' },
-            { code: 'it', label: 'Italiano' },
-          ]
+            cta_link: 'mailto:craescu.stefangabriel@gmail.com?subject=Contact%20from%20portfolio%20website&body=Hi%20Stefan%2C%0A%0AI%20am%20contacting%20you%20from%20your%20portfolio%20website'
+          }
         }
       } />
     </header>

@@ -15,7 +15,7 @@ export default function ContentBody({ contentType, title, tags, date, content, l
 }) {
   return (
     <Boundary as="article" className="text-focus-in">
-      <div className="rounded-2xl border-2 border-white bg-black/80 px-4 py-10 md:px-8 md:py-20">
+      <article className="rounded-2xl border-2 border-white bg-black/80 px-4 py-10 md:px-8 md:py-20">
         <Heading as="h1"
                  className="text-[clamp(3rem,24vw,1rem)] leading-snug md:leading-normal text-center md:text-start">{ title }</Heading>
         <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2 text-yellow-500 pt-4">
@@ -65,7 +65,7 @@ export default function ContentBody({ contentType, title, tags, date, content, l
             </TracingBeam>
           </div>
         </div>
-      </div>
+      </article>
     </Boundary>
   )
 }

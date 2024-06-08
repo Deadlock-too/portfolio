@@ -10,7 +10,7 @@ import { Highlight } from '@/components/highlight'
 export default function AboutMe() {
   return (
     <Boundary>
-      <div className="grid gap-x-8 gap-y-6 md:grid-cols-[2fr,1fr]">
+      <section className="grid gap-x-8 gap-y-6 md:grid-cols-[2fr,1fr]">
         <Heading as="h1" size="xl" className="focus-in-expand col-start-1">
           About me
         </Heading>
@@ -28,7 +28,7 @@ export default function AboutMe() {
           alt="A picture of me"
           className="justify-self-center row-start-1 max-w-sm md:col-start-2 md:row-end-3"
         />
-      </div>
+      </section>
     </Boundary>
   )
 }

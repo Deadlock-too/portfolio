@@ -16,7 +16,7 @@ export default async function About() {
   const passions = data.passions
 
   return (
-    <>
+    <main>
       <AboutMe/>
       <TechList/>
       <Experience heading={ 'Experience' } items={ experience.workExperience } shortDate={false}/>
@@ -27,6 +27,6 @@ export default async function About() {
           items={ passions }
         />
       </Suspense>
-    </>
+    </main>
   )
 }

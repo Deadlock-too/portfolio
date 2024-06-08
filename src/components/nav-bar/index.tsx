@@ -9,8 +9,7 @@ import Button from '@/components/button'
 import { TypeAnimation } from 'react-type-animation'
 
 export default function NavBar({
-  settings,
-  currentLanguage
+  settings
 }: {
   settings: {
     data: {
@@ -18,10 +17,8 @@ export default function NavBar({
       nav_item: { link: string; label: string }[];
       cta_label: string;
       cta_link: string;
-    }
-    languages: { code: string; label: string }[];
-  }
-  currentLanguage: string;
+    };
+  };
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -98,7 +95,7 @@ export default function NavBar({
             />
           </li>
         </div>
-        <DesktopMenu settings={settings} pathname={pathname} currentLanguage={currentLanguage} />
+        <DesktopMenu settings={settings} pathname={pathname} />
       </ul>
     </nav>
   );
@@ -137,11 +134,9 @@ function DesktopMenu({
       nav_item: { link: string; label: string }[];
       cta_label: string;
       cta_link: string;
-    }
-    languages: { code: string; label: string }[];
+    };
   };
   pathname: string;
-  currentLanguage: string;
 }) {
   return (
     <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
