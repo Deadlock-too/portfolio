@@ -3,25 +3,25 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: '/',
+      url: 'https://craescustefangabriel.com/',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: '/about',
+      url: 'https://craescustefangabriel.com/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: '/project',
+      url: 'https://craescustefangabriel.com/project',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: '/blog',
+      url: 'https://craescustefangabriel.com/blog',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
