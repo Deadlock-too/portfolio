@@ -66,7 +66,7 @@ export default function Hero() {
 
   return (
     <Boundary ref={ component }>
-      <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid min-h-[60vh] grid-cols-1 md:grid-cols-2 items-center">
         <div className="col-start-1 md:row-start-1">
           <h1
             className="mb-8 text-[clamp(3rem,24vw,24rem)] md:text-[clamp(3rem,10vw,10rem)] font-extrabold leading-none tracking-tighter"

@@ -4,10 +4,10 @@ import Button from '@/components/button'
 export default function PageNotFound() {
 
   return (
-    <Boundary>
+    <Boundary className="min-h-[70vh]">
       <div className="jello-horizontal overflow-hidden flex flex-col min-h-[50vh] items-center justify-center px-4 text-center gap-16">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Oops! That page doesn’t exist.</h1>
+          <h1 className="text-white text-3xl font-bold tracking-tighter sm:text-5xl">Oops! That page doesn’t exist.</h1>
           <p
             className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400"
           >

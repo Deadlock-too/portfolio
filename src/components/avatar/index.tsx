@@ -61,7 +61,7 @@ export default function Avatar({
 
   return (
     <div ref={ component } className={ clsx('relative h-full w-full scale-90 md:scale-100', className) }>
-      <div className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-white opacity-0">
+      <figure className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-white opacity-0">
         <Image
           src={ src }
           alt={ alt }
@@ -70,10 +70,11 @@ export default function Avatar({
           className="object-cover avatar-image w-full h-full"
           quality={ 90 }
         />
+        <figcaption className="sr-only">{ alt }</figcaption>
         <div
           className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"
         />
-      </div>
+      </figure>
     </div>
   )
 }
