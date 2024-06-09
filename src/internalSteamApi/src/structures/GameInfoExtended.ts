@@ -1,12 +1,12 @@
 import GameInfo, { GameInfoData } from './GameInfo'
 
 type GameInfoExtendedData = GameInfoData & {
-  has_workshop: boolean;
-  has_market: boolean;
-  has_dlc: boolean;
-  capsule_filename?: string;
-  sort_as?: string;
-};
+  has_workshop: boolean
+  has_market: boolean
+  has_dlc: boolean
+  capsule_filename?: string
+  sort_as?: string
+}
 
 export default class GameInfoExtended extends GameInfo {
   /** If this game has a workshop */

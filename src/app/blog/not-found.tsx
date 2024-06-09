@@ -4,7 +4,7 @@ import ContentNotFound from '@/components/content-not-found'
 export default function NotFound() {
   return (
     <Boundary>
-      <ContentNotFound contentType="blog" />
+      <ContentNotFound contentType='blog' />
     </Boundary>
   )
 }

@@ -1,6 +1,6 @@
 import querystring from 'node:querystring'
 
-import { fetch, assertID } from './utils'
+import { assertID, fetch } from './utils'
 import Game from './structures/Game'
 import GameInfo from './structures/GameInfo'
 import GameInfoExtended from './structures/GameInfoExtended'
@@ -22,23 +22,23 @@ const defaultOptions = {
 
 export interface GetUserOwnedGamesOptions {
   /** Include additional details (name, icon) about each game */
-  includeAppInfo?: boolean;
+  includeAppInfo?: boolean
   /** Include free games the user has played */
-  includeFreeGames?: boolean;
+  includeFreeGames?: boolean
   /** Includes games in the free sub (defaults to false) */
-  includeFreeSubGames?: boolean;
+  includeFreeSubGames?: boolean
   /** Include unvetted store apps (defaults to false) */
-  includeUnvettedApps?: boolean;
+  includeUnvettedApps?: boolean
   /** Include even more app details. If true, `includeAppInfo` will also be set to true */
-  includeExtendedAppInfo?: boolean;
+  includeExtendedAppInfo?: boolean
   /** If set, restricts results to the passed in apps. (note: does not seem to actually work) */
-  filterApps?: number[];
+  filterApps?: number[]
   /** Language to return app info in. (note: does not seem to actualy work) */
-  language?: Language;
+  language?: Language
 }
 
 export type Currency =
-  'us'
+  | 'us'
   | 'uk'
   | 'eu'
   | 'ru'
@@ -78,9 +78,9 @@ export type Currency =
   | 'az'
   | 'ar'
   | 'tr'
-  | 'pk';
+  | 'pk'
 export type Language =
-  'arabic'
+  | 'arabic'
   | 'bulgarian'
   | 'schinese'
   | 'tchinese'
@@ -108,7 +108,7 @@ export type Language =
   | 'thai'
   | 'turkish'
   | 'ukrainian'
-  | 'vietnamese';
+  | 'vietnamese'
 
 interface SteamAPIOptions {
   /**
@@ -116,66 +116,66 @@ interface SteamAPIOptions {
    *
    * 'english' by default
    */
-  language?: Language;
+  language?: Language
   /**
    * Default currency to use for the API when a currency is not explicitly provided
    *
    * 'us' by default
    */
-  currency?: Currency;
+  currency?: Currency
   /**
    * Custom headers to send for all API requests
    *
    * By default, User-Agent is "SteamAPI/<VERSION> (https://www.npmjs.com/package/steamapi)"
    */
   headers?: {
-    [key: string]: string;
-  };
+    [key: string]: string
+  }
   /**
    * URL to use for Steam API requests
    *
    * 'https://api.steampowered.com' by default
    */
-  baseAPI?: string;
+  baseAPI?: string
   /**
    * URL to use for Steam Store API requests
    *
    * 'https://store.steampowered.com/api' by default
    */
-  baseStore?: string;
+  baseStore?: string
   /**
    * URL to use for Steam action requests (only used for getLocations)
    *
    * 'https://steamcommunity.com/actions' by default
    */
-  baseActions?: string;
+  baseActions?: string
   /**
    * Whether to use built-in in-memory caching for gameDetailCache and userResolveCache
    */
-  inMemoryCacheEnabled?: boolean;
+  inMemoryCacheEnabled?: boolean
   /**
    * If `inMemoryCacheEnabled` is true, this decides whether to cache API requests for getGameDetails()
    */
-  gameDetailCacheEnabled?: boolean;
+  gameDetailCacheEnabled?: boolean
   /**
    * How long to cache getGameDetails() in milliseconds
    */
-  gameDetailCacheTTL?: number;
+  gameDetailCacheTTL?: number
   /**
    * If `inMemoryCacheEnabled` is true, this decides whether to cache API requests for resolve()
    */
-  userResolveCacheEnabled?: boolean;
+  userResolveCacheEnabled?: boolean
   /**
    * How long to cache resolve() in milliseconds
    */
-  userResolveCacheTTL?: number;
+  userResolveCacheTTL?: number
 }
 
 export default class SteamAPI {
   language: Language
   currency: Currency
   headers: {
-    [key: string]: string;
+    [key: string]: string
   }
   baseAPI: string
   baseStore: string
@@ -192,11 +192,13 @@ export default class SteamAPI {
       if (key) {
         this.key = key
       } else {
-        console.warn([
-          'no key provided',
-          'some methods won\'t work',
-          'get one from https://goo.gl/DfNy5s or initialize SteamAPI as new SteamAPI(false) to suppress this warning'
-        ].join('\n'))
+        console.warn(
+          [
+            'no key provided',
+            "some methods won't work",
+            'get one from https://goo.gl/DfNy5s or initialize SteamAPI as new SteamAPI(false) to suppress this warning',
+          ].join('\n'),
+        )
       }
     }
     options = { ...defaultOptions, ...options }
@@ -214,10 +216,9 @@ export default class SteamAPI {
    * @param base Base API URL
    * @returns Parse JSON
    */
-  get(path: string, params: querystring.ParsedUrlQueryInput = {}, base = this.baseAPI) : Promise<any> {
-    if (this.key)
-      params.key = this.key
-    return fetch(`${ base }${ path }?${ querystring.stringify(params) }`, this.headers)
+  get(path: string, params: querystring.ParsedUrlQueryInput = {}, base = this.baseAPI): Promise<any> {
+    if (this.key) params.key = this.key
+    return fetch(`${base}${path}?${querystring.stringify(params)}`, this.headers)
   }
 
   /**
@@ -226,15 +227,15 @@ export default class SteamAPI {
    * @param opts Additional options for filtering
    * @returns Owned games
    */
-  async getUserOwnedGames(id: string, opts: GetUserOwnedGamesOptions = {}) : Promise<UserPlaytime<Game | GameInfo | GameInfoExtended>[]> {
+  async getUserOwnedGames(
+    id: string,
+    opts: GetUserOwnedGamesOptions = {},
+  ): Promise<UserPlaytime<Game | GameInfo | GameInfoExtended>[]> {
     assertID(id)
     // Same behavior as v3
-    if (opts.includeFreeGames === undefined)
-      opts.includeFreeGames = true
-    if (opts.language === undefined)
-      opts.language = this.language
-    if (opts.includeExtendedAppInfo)
-      opts.includeAppInfo = true
+    if (opts.includeFreeGames === undefined) opts.includeFreeGames = true
+    if (opts.language === undefined) opts.language = this.language
+    if (opts.includeExtendedAppInfo) opts.includeAppInfo = true
     const params = {
       steamid: id,
       include_appinfo: opts.includeAppInfo,
@@ -246,18 +247,13 @@ export default class SteamAPI {
       language: opts.language,
     } as any
     // Filter out options that weren't supplied
-    for (const [ k, v ] of Object.entries(params))
-      if (v === undefined)
-        delete params[k]
+    for (const [k, v] of Object.entries(params)) if (v === undefined) delete params[k]
     const json = await this.get('/IPlayerService/GetOwnedGames/v1', params)
     return json.response.games.map((data: any) => {
       let game
-      if (opts.includeExtendedAppInfo)
-        game = new GameInfoExtended(data)
-      else if (opts.includeAppInfo)
-        game = new GameInfo(data)
-      else
-        game = new Game(data)
+      if (opts.includeExtendedAppInfo) game = new GameInfoExtended(data)
+      else if (opts.includeAppInfo) game = new GameInfo(data)
+      else game = new Game(data)
       return new UserPlaytime(data, game)
     })
   }

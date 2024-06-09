@@ -6,33 +6,27 @@ import MoviesDisplaySkeleton from '@/components/passions/movies/skeleton'
 
 export default function PassionsSkeleton() {
   return (
-    <Boundary className="animate-pulse">
-      <div className="h-20 w-[26rem] bg-gray-700/50 rounded-xl"/>
-      {
-        Array.from({ length: 3 }).map((_, index) => (
-          <div key={index} className="ml-6 mt-8 md:ml-12 md:mt-14">
-            {
-              (() => {
-                switch (index) {
-                  case 0:
-                    return <MusicDisplaySkeleton index={ index }/>
-                  case 1:
-                    return <GamesDisplaySkeleton index={ index }/>
-                  case 2:
-                    return <MoviesDisplaySkeleton index={ index }/>
-                  default:
-                    return null
-                }
-              })()
+    <Boundary className='animate-pulse'>
+      <div className='h-20 w-[26rem] bg-gray-700/50 rounded-xl' />
+      {Array.from({ length: 3 }).map((_, index) => (
+        <div
+          key={index}
+          className='ml-6 mt-8 md:ml-12 md:mt-14'
+        >
+          {(() => {
+            switch (index) {
+              case 0:
+                return <MusicDisplaySkeleton index={index} />
+              case 1:
+                return <GamesDisplaySkeleton index={index} />
+              case 2:
+                return <MoviesDisplaySkeleton index={index} />
+              default:
+                return null
             }
-          </div>
-        ))
-      }
+          })()}
+        </div>
+      ))}
     </Boundary>
   )
 }
-
-
-
-
-

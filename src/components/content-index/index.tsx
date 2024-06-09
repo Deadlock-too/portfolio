@@ -11,16 +11,27 @@ type ContentIndexProps = {
   items: Content[]
 }
 
-export default async function ContentIndex({ heading, description, contentType, viewMoreText, items }: ContentIndexProps) {
+export default async function ContentIndex({
+  heading,
+  description,
+  contentType,
+  viewMoreText,
+  items,
+}: ContentIndexProps) {
   return (
-    <Boundary className="w-screen h-screen">
-      <Heading size="xl" className="focus-in-expand mb-8">
-        { heading }
+    <Boundary className='w-screen h-screen'>
+      <Heading
+        size='xl'
+        className='focus-in-expand mb-8'
+      >
+        {heading}
       </Heading>
-      <div className="text-focus-in prose prose-xl prose-invert mb-10">
-        { description }
-      </div>
-      <ContentList items={items} contentType={contentType} viewMoreText={viewMoreText} />
+      <div className='text-focus-in prose prose-xl prose-invert mb-10'>{description}</div>
+      <ContentList
+        items={items}
+        contentType={contentType}
+        viewMoreText={viewMoreText}
+      />
     </Boundary>
   )
 }

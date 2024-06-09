@@ -3,9 +3,9 @@ import Game, { GameData } from './Game'
 const communityBase = 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps'
 
 export type GameInfoBasicData = GameData & {
-  name: string;
-  img_icon_url: string;
-};
+  name: string
+  img_icon_url: string
+}
 
 export default class GameInfoBasic extends Game {
   /** Name for this game */
@@ -21,6 +21,6 @@ export default class GameInfoBasic extends Game {
 
   /** tiny app icon */
   get iconURL(): string {
-    return `${ communityBase }/${ this.id }/${ this.icon }.jpg`
+    return `${communityBase}/${this.id}/${this.icon}.jpg`
   }
 }

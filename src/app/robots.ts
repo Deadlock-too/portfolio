@@ -4,14 +4,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: [
-        '/',
-        '/api/og/'
-      ],
+      allow: ['/', '/api/og/'],
     },
-    sitemap: [
-      'https://craescustefangabriel.com/sitemap.xml',
-      'https://www.craescustefangabriel.com/sitemap.xml'
-    ]
+    sitemap: ['https://craescustefangabriel.com/sitemap.xml', 'https://www.craescustefangabriel.com/sitemap.xml'],
   }
 }

@@ -15,16 +15,16 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+        url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
           title: title,
-          description: description
-        }) }`,
+          description: description,
+        })}`,
         width: 1200,
         height: 630,
         alt: title,
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
 
 export default async function About() {
@@ -33,14 +33,22 @@ export default async function About() {
 
   return (
     <main>
-      <AboutMe/>
-      <TechList/>
-      <Experience heading={ 'Experience' } items={ experience.workExperience } shortDate={false}/>
-      <Experience heading={ 'Education' } items={ experience.education } shortDate={true}/>
-      <Suspense fallback={ <PassionsSkeleton/> }>
+      <AboutMe />
+      <TechList />
+      <Experience
+        heading={'Experience'}
+        items={experience.workExperience}
+        shortDate={false}
+      />
+      <Experience
+        heading={'Education'}
+        items={experience.education}
+        shortDate={true}
+      />
+      <Suspense fallback={<PassionsSkeleton />}>
         <Passions
-          heading={ 'My passions' }
-          items={ passions }
+          heading={'My passions'}
+          items={passions}
         />
       </Suspense>
     </main>

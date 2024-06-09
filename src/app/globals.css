@@ -4,15 +4,15 @@
 
 .background-gradient {
   background: radial-gradient(
-      circle at top center,
-      hsla(222, 80%, 60%, 0.5) 0%,
-      hsla(222, 0%, 0%, 0) 50%,
-      hsla(222, 0%, 0%, 0) 100%
+    circle at top center,
+    hsla(222, 80%, 60%, 0.5) 0%,
+    hsla(222, 0%, 0%, 0) 50%,
+    hsla(222, 0%, 0%, 0) 100%
   );
 }
 
 .focus-in-expand {
-  animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: focus-in-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 250ms;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .text-focus-in {
-  animation: text-focus-in 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
 @keyframes text-focus-in {
@@ -122,7 +122,8 @@
 }
 
 /* flip the pane when hovered */
-.flippable-card-container:hover .flippable-card-flipper, .flippable-card-container.hover .flippable-card-flipper {
+.flippable-card-container:hover .flippable-card-flipper,
+.flippable-card-container.hover .flippable-card-flipper {
   transform: rotateY(180deg);
 }
 
@@ -135,7 +136,8 @@
 }
 
 /* hide back of pane during swap */
-.flippable-card-front, .flippable-card-back {
+.flippable-card-front,
+.flippable-card-back {
   backface-visibility: hidden;
 
   position: absolute;
@@ -286,7 +288,8 @@
   transition: 0.2s;
 }
 
-::-moz-selection { /* Code for Firefox */
+::-moz-selection {
+  /* Code for Firefox */
   color: black;
   background: yellow;
 }

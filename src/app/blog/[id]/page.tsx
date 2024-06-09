@@ -3,13 +3,15 @@ import { Content } from '@/types'
 import data from '@/data/data.json'
 import { notFound } from 'next/navigation'
 
-export async function generateMetadata({ params }: {
+export async function generateMetadata({
+  params,
+}: {
   params: {
     id: string
   }
 }) {
   const blogPost = await (async () => {
-    return (data.blogPosts ?? [] as Content[]).find(blog => blog.id === params.id)
+    return (data.blogPosts ?? ([] as Content[])).find((blog) => blog.id === params.id)
   })()
 
   let title: string
@@ -29,30 +31,37 @@ export async function generateMetadata({ params }: {
     openGraph: {
       images: [
         {
-          url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+          url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
             title: title,
-            description: description
-          }) }`,
+            description: description,
+          })}`,
           width: 1200,
           height: 630,
           alt: title,
-        }
-      ]
-    }
+        },
+      ],
+    },
   }
 }
 
-export default function Blog({ params }: {
+export default function Blog({
+  params,
+}: {
   params: {
     id: string
   }
 }) {
-  const blogPost = (data.blogPosts ?? [] as Content[]).find(blog => blog.id === params.id)
+  const blogPost = (data.blogPosts ?? ([] as Content[])).find((blog) => blog.id === params.id)
 
   if (!blogPost) notFound()
 
   return (
-    <ContentBody contentType="blog" title={ blogPost.title } tags={ blogPost.tags } date={ new Date(blogPost.date) }
-                 content={ blogPost.content }/>
+    <ContentBody
+      contentType='blog'
+      title={blogPost.title}
+      tags={blogPost.tags}
+      date={new Date(blogPost.date)}
+      content={blogPost.content}
+    />
   )
 }

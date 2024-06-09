@@ -11,16 +11,16 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+        url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
           title: title,
-          description: description
-        }) }`,
+          description: description,
+        })}`,
         width: 1200,
         height: 630,
         alt: 'Projects',
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
 
 export default function Projects() {
@@ -28,11 +28,11 @@ export default function Projects() {
 
   return (
     <ContentIndex
-      heading="Projects"
-      contentType="project"
+      heading='Projects'
+      contentType='project'
       description="The tech projects I've made"
-      viewMoreText="View More"
-      items={ projects }
+      viewMoreText='View More'
+      items={projects}
     />
   )
 }

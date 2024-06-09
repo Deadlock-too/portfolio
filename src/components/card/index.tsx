@@ -6,19 +6,17 @@ type CardProps = {
   children: React.ReactNode
 }
 
-const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <div
-        ref={ ref }
-        className={ clsx('w-[90vw] md:w-full rounded-2xl', className) }
-        { ...props }
-      >
-        { children }
-      </div>
-    )
-  }
-)
+const Card = forwardRef<HTMLDivElement, CardProps>(({ className, children, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={clsx('w-[90vw] md:w-full rounded-2xl', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+})
 
 Card.displayName = 'Card'
 

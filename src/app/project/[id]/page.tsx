@@ -3,13 +3,15 @@ import data from '@/data/data.json'
 import { Content } from '@/types'
 import { notFound } from 'next/navigation'
 
-export async function generateMetadata({ params }: {
+export async function generateMetadata({
+  params,
+}: {
   params: {
     id: string
   }
 }) {
   const project = await (async () => {
-    return (data.projects ?? [] as Content[]).find(project => project.id === params.id)
+    return (data.projects ?? ([] as Content[])).find((project) => project.id === params.id)
   })()
 
   let title: string
@@ -29,30 +31,38 @@ export async function generateMetadata({ params }: {
     openGraph: {
       images: [
         {
-          url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+          url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
             title: title,
-            description: description
-          }) }`,
+            description: description,
+          })}`,
           width: 1200,
           height: 630,
           alt: title,
-        }
-      ]
-    }
+        },
+      ],
+    },
   }
 }
 
-export default function Project({ params }: {
+export default function Project({
+  params,
+}: {
   params: {
     id: string
   }
 }) {
-  const project = (data.projects ?? [] as Content[]).find(project => project.id === params.id)
+  const project = (data.projects ?? ([] as Content[])).find((project) => project.id === params.id)
 
   if (!project) notFound()
 
   return (
-    <ContentBody contentType="project" title={ project.title } tags={ project.tags }
-                 date={ new Date(project.startDate) } content={ project.content } link={ project.url }/>
+    <ContentBody
+      contentType='project'
+      title={project.title}
+      tags={project.tags}
+      date={new Date(project.startDate)}
+      content={project.content}
+      link={project.url}
+    />
   )
 }

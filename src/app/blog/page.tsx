@@ -2,7 +2,7 @@ import ContentIndex from '@/components/content-index'
 import data from '@/data/data.json'
 
 const title: string = 'Blog'
-const description: string = 'My blog posts about what I\'ve learned.'
+const description: string = "My blog posts about what I've learned."
 
 export const metadata = {
   title: title,
@@ -10,16 +10,16 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+        url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
           title: title,
-          description: description
-        }) }`,
+          description: description,
+        })}`,
         width: 1200,
         height: 630,
         alt: 'Blog',
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
 
 export default function Blog() {
@@ -27,11 +27,11 @@ export default function Blog() {
 
   return (
     <ContentIndex
-      heading="Blog"
-      contentType="blog"
+      heading='Blog'
+      contentType='blog'
       description="I write about what I've learned so others can benefit."
-      viewMoreText="Read More"
-      items={ blogPosts }
+      viewMoreText='Read More'
+      items={blogPosts}
     />
   )
 }

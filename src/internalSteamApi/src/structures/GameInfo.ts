@@ -1,10 +1,10 @@
 import GameInfoBasic, { GameInfoBasicData } from './GameInfoBasic'
 
 export type GameInfoData = GameInfoBasicData & {
-  has_community_visible_stats: boolean;
-  has_leaderboards: boolean;
-  content_descriptor_ids?: number[];
-};
+  has_community_visible_stats: boolean
+  has_leaderboards: boolean
+  content_descriptor_ids?: number[]
+}
 
 export default class GameInfo extends GameInfoBasic {
   /** If this game has community visible stats */

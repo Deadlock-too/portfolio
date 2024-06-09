@@ -3,16 +3,16 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'i.scdn.co'
+        hostname: 'i.scdn.co',
       },
       {
-        hostname: 'steamcdn-a.akamaihd.net'
+        hostname: 'steamcdn-a.akamaihd.net',
       },
       {
-        hostname: 'image.tmdb.org'
-      }
-    ]
-  }
-};
+        hostname: 'image.tmdb.org',
+      },
+    ],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
