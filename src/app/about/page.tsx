@@ -6,9 +6,25 @@ import Passions from '@/components/passions'
 import React, { Suspense } from 'react'
 import PassionsSkeleton from '@/components/passions/skeleton'
 
+const title: string = 'About me'
+const description: string = 'My tech stack and experiences'
+
 export const metadata = {
-  title: 'About me',
-  description: 'About me page with my tech stack and experience.'
+  title: title,
+  description: description,
+  openGraph: {
+    images: [
+      {
+        url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+          title: title,
+          description: description
+        }) }`,
+        width: 1200,
+        height: 630,
+        alt: title,
+      }
+    ]
+  }
 }
 
 export default async function About() {

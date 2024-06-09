@@ -12,14 +12,33 @@ export async function generateMetadata({ params }: {
     return (data.projects ?? [] as Content[]).find(project => project.id === params.id)
   })()
 
-  if (!project) return {
-    title: 'Project Not Found',
-    description: 'This project does not exist.'
+  let title: string
+  let description: string
+
+  if (project) {
+    title = project.title
+    description = project.description
+  } else {
+    title = 'Project Not Found'
+    description = 'This project does not exist.'
   }
 
   return {
-    title: project.title,
-    description: project.description,
+    title: title,
+    description: description,
+    openGraph: {
+      images: [
+        {
+          url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+            title: title,
+            description: description
+          }) }`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        }
+      ]
+    }
   }
 }
 

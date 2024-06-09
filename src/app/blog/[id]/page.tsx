@@ -12,18 +12,37 @@ export async function generateMetadata({ params }: {
     return (data.blogPosts ?? [] as Content[]).find(blog => blog.id === params.id)
   })()
 
-  if (!blogPost) return {
-    title: 'Blog Post Not Found',
-    description: 'This blog post does not exist.'
+  let title: string
+  let description: string
+
+  if (blogPost) {
+    title = blogPost.title
+    description = blogPost.description
+  } else {
+    title = 'Blog Post Not Found'
+    description = 'This blog post does not exist.'
   }
 
   return {
-    title: blogPost.title,
-    description: blogPost.description,
+    title: title,
+    description: description,
+    openGraph: {
+      images: [
+        {
+          url: `https://craescustefangabriel.com/api/og?${ new URLSearchParams({
+            title: title,
+            description: description
+          }) }`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        }
+      ]
+    }
   }
 }
 
-export default function Blog({ params } : {
+export default function Blog({ params }: {
   params: {
     id: string
   }
@@ -33,6 +52,7 @@ export default function Blog({ params } : {
   if (!blogPost) notFound()
 
   return (
-    <ContentBody contentType="blog" title={ blogPost.title } tags={ blogPost.tags } date={ new Date(blogPost.date) } content={blogPost.content} />
+    <ContentBody contentType="blog" title={ blogPost.title } tags={ blogPost.tags } date={ new Date(blogPost.date) }
+                 content={ blogPost.content }/>
   )
 }

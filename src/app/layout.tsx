@@ -11,10 +11,13 @@ import { isMobile } from '@/utils'
 
 const urbanist = Urbanist({ subsets: [ 'latin' ] })
 
+const title: string = 'My developer portfolio'
+const description: string = 'Showcasing of my projects and blog posts'
+
 export const metadata: Metadata = {
   applicationName: 'My developer portfolio',
-  title: 'My developer portfolio',
-  description: 'My professional portfolio showcasing my projects and blog posts.',
+  title: title,
+  description: description,
   icons: {
     icon: {
       url: '/favicon.ico',
@@ -35,12 +38,20 @@ export const metadata: Metadata = {
     }
   ],
   openGraph: {
-    title: 'My developer portfolio',
-    description: 'My professional portfolio showcasing my projects and blog posts.',
-    url: 'https://craescustefangabriel.com',
+    title: title,
+    description: description,
+    url: 'localhost:3000',
     type: 'website',
     locale: 'en_US',
-    emails: [ 'craescu.stefangabriel@gmail.com' ]
+    emails: [ 'craescu.stefangabriel@gmail.com' ],
+    images: [
+      {
+        url: `localhost:3000/api/og?${new URLSearchParams({ title: title, description: description })}`,
+        width: 1200,
+        height: 630,
+        alt: 'My developer portfolio',
+      }
+    ],
   },
 }
 
