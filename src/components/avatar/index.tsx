@@ -79,7 +79,7 @@ export default function Avatar({ src, alt, className }: AvatarProps) {
           alt={alt}
           placeholder='blur'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-          className='object-cover avatar-image w-full h-full'
+          className='avatar-image h-full w-full object-cover'
           quality={90}
         />
         <figcaption className='sr-only'>{alt}</figcaption>

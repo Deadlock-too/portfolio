@@ -32,9 +32,9 @@ export const TracingBeam = ({ children, className }: { children: React.ReactNode
   return (
     <motion.div
       ref={ref}
-      className={cn('relative w-full max-w-4xl mx-auto h-full', className)}
+      className={cn('relative mx-auto h-full w-full max-w-4xl', className)}
     >
-      <div className='absolute -left-4 md:-left-4 top-2'>
+      <div className='absolute -left-4 top-2 md:-left-4'>
         <motion.div
           transition={{
             duration: 0.2,
@@ -43,7 +43,7 @@ export const TracingBeam = ({ children, className }: { children: React.ReactNode
           animate={{
             boxShadow: scrollYProgress.get() > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
           }}
-          className='ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center'
+          className='border-netural-200 ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border shadow-sm'
         >
           <motion.div
             transition={{
@@ -61,7 +61,7 @@ export const TracingBeam = ({ children, className }: { children: React.ReactNode
           viewBox={`0 0 20 ${svgHeight}`}
           width='20'
           height={svgHeight} // Set the SVG height
-          className=' ml-4 block'
+          className='ml-4 block'
           aria-hidden='true'
         >
           <motion.path

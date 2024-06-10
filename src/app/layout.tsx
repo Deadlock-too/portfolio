@@ -37,6 +37,24 @@ export const metadata: Metadata = {
       url: 'https://www.linkedin.com/in/stefan-gabriel-craescu-933643183/',
     },
   ],
+  twitter: {
+    card: 'summary_large_image',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
+          title: title,
+          description: description,
+          width: '1200',
+          height: '675',
+        })}`,
+        width: 1200,
+        height: 675,
+        alt: title,
+      },
+    ],
+  },
   openGraph: {
     title: title,
     description: description,
@@ -52,7 +70,7 @@ export const metadata: Metadata = {
         })}`,
         width: 1200,
         height: 630,
-        alt: 'My developer portfolio',
+        alt: title,
       },
     ],
   },
@@ -76,7 +94,7 @@ export default function RootLayout({
       lang='en'
       className='bg-black text-black'
     >
-      <body className={clsx(urbanist.className, 'relative md:-mt-4 min-h-screen')}>
+      <body className={clsx(urbanist.className, 'relative min-h-screen md:-mt-4')}>
         <Background
           className='min-w-full'
           isMobile={mobile}

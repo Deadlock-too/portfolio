@@ -64,7 +64,7 @@ export default function TechList() {
           {Array.from({ length: 45 }, (_, index) => (
             <Fragment key={index}>
               <span
-                className={clsx('tech-item text-5xl md:text-8xl font-extrabold uppercase tracking-tighter')}
+                className={clsx('tech-item text-5xl font-extrabold uppercase tracking-tighter md:text-8xl')}
                 style={{ color: index === 22 && tech.color ? tech.color : 'inherit' }}
               >
                 {tech.name}

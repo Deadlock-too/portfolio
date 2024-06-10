@@ -12,6 +12,24 @@ const description: string = 'My tech stack and experiences'
 export const metadata = {
   title: title,
   description: description,
+  twitter: {
+    card: 'summary_large_image',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `https://craescustefangabriel.com/api/og?${new URLSearchParams({
+          title: title,
+          description: description,
+          width: '1200',
+          height: '675',
+        })}`,
+        width: 1200,
+        height: 675,
+        alt: title,
+      },
+    ],
+  },
   openGraph: {
     images: [
       {

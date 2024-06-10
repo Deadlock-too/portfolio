@@ -25,7 +25,7 @@ const FlippableCardFront = forwardRef<HTMLDivElement, FilppableCardProps>(({ cla
   return (
     <div
       ref={ref}
-      className={clsx('flippable-card-front h-48 p-4 rounded-2xl w-full', className)}
+      className={clsx('flippable-card-front h-48 w-full rounded-2xl p-4', className)}
       {...props}
     >
       {children}
@@ -39,7 +39,7 @@ const FlippableCardBack = forwardRef<HTMLDivElement, FilppableCardProps>(({ clas
   return (
     <div
       ref={ref}
-      className={clsx('flippable-card-back h-48 p-4 rounded-2xl w-full', className)}
+      className={clsx('flippable-card-back h-48 w-full rounded-2xl p-4', className)}
       {...props}
     >
       {children}

@@ -88,17 +88,17 @@ export default function MusicDisplay({
           <Card
             key={index}
             className={clsx(
-              'border-2 song-card flex flex-row p-4 -ml-6 gap-2 hover:opacity-100 hover:scale-105 transition-all ease-in-out duration-300',
-              playing === index ? 'bg-black/80 opacity-80 scale-105' : 'bg-black/60 opacity-60',
+              'song-card -ml-6 flex flex-row gap-2 border-2 p-4 transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-100',
+              playing === index ? 'scale-105 bg-black/80 opacity-80' : 'bg-black/60 opacity-60',
             )}
           >
             <div className='song-card-index'>
-              <p className='text-sm bg-black text-center content-center border-2 rounded-[50%] border-white w-6 h-6 -ml-2 -mt-2 text-slate-100'>
+              <p className='-ml-2 -mt-2 h-6 w-6 content-center rounded-[50%] border-2 border-white bg-black text-center text-sm text-slate-100'>
                 {index + 1}
               </p>
             </div>
             <div
-              className='song-card-entry group border-2 m-1 rounded-2xl border-white overflow-hidden'
+              className='song-card-entry group m-1 overflow-hidden rounded-2xl border-2 border-white'
               onClick={() => {
                 setSongPlaying(index)
               }}
@@ -113,7 +113,7 @@ export default function MusicDisplay({
               <div className='group-hover:opacity-40'>{song.image}</div>
               <div
                 className={clsx(
-                  'song-card-bar bg-yellow-500 h-1.5 w-full ',
+                  'song-card-bar h-1.5 w-full bg-yellow-500',
                   playing === index ? 'opacity-100' : 'opacity-0',
                 )}
                 style={{ transform: `translateX(-${100 - (time / 30) * 100}%)` }}
@@ -122,7 +122,7 @@ export default function MusicDisplay({
             <Link
               href={song.track.external_urls.spotify}
               target='_blank'
-              className='flex flex-row justify-between items-center w-full p-2'
+              className='flex w-full flex-row items-center justify-between p-2'
             >
               <div className='content-center'>
                 <p className='text-xl text-white'>{song.track.name}</p>
@@ -137,7 +137,7 @@ export default function MusicDisplay({
                 src={Vinyl}
                 alt='Vinyl'
                 className={clsx(
-                  'h-12 w-12 md:h-14 md:w-14 invert song-card-animate-spin transition-all ease-in-out duration-300',
+                  'song-card-animate-spin h-12 w-12 invert transition-all duration-300 ease-in-out md:h-14 md:w-14',
                   playing === index ? 'opacity-100' : 'opacity-0',
                 )}
               />

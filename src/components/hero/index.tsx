@@ -70,10 +70,10 @@ export default function Hero() {
 
   return (
     <Boundary ref={component}>
-      <div className='grid min-h-[60vh] grid-cols-1 md:grid-cols-2 items-center'>
+      <div className='grid min-h-[60vh] grid-cols-1 items-center md:grid-cols-2'>
         <div className='col-start-1 md:row-start-1'>
           <h1
-            className='mb-8 text-[clamp(3rem,24vw,24rem)] md:text-[clamp(3rem,10vw,10rem)] font-extrabold leading-none tracking-tighter'
+            className='mb-8 text-[clamp(3rem,24vw,24rem)] font-extrabold leading-none tracking-tighter md:text-[clamp(3rem,10vw,10rem)]'
             aria-label={`${firstName} ${lastName}`}
           >
             <span className='block text-yellow-200'>{renderLetters(firstName)}</span>

@@ -10,7 +10,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ className, children, ...pr
   return (
     <div
       ref={ref}
-      className={clsx('w-[90vw] md:w-full rounded-2xl', className)}
+      className={clsx('w-[90vw] rounded-2xl md:w-full', className)}
       {...props}
     >
       {children}

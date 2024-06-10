@@ -55,14 +55,14 @@ export default function Experience({ heading, items, shortDate }: ExperienceProp
               >
                 {item.title}
               </Heading>
-              <div className='mt-1 flex flex-col-reverse md:flex-row w-fit md:items-center md:gap-1 text-2xl font-semibold tracking-tight text-yellow-500'>
+              <div className='mt-1 flex w-fit flex-col-reverse text-2xl font-semibold tracking-tight text-yellow-500 md:flex-row md:items-center md:gap-1'>
                 <span>
                   {start} - {end}
                 </span>{' '}
-                <span className='text-3xl font-extralight hidden md:inline'>/</span> <span>{item.institution}</span>
+                <span className='hidden text-3xl font-extralight md:inline'>/</span> <span>{item.institution}</span>
               </div>
               <div className='prose prose-lg prose-invert mt-4'>{item.description}</div>
-              <div className='flex flex-wrap md:justify-start gap-x-4 gap-y-2 text-yellow-500 pt-4'>
+              <div className='flex flex-wrap gap-x-4 gap-y-2 pt-4 text-yellow-500 md:justify-start'>
                 {item.tags?.map((tag, index) => (
                   <span
                     className='inline-flex items-center rounded-full border bg-black/80 px-2.5 py-0.5 text-xs font-semibold transition-all ease-in-out hover:scale-125'

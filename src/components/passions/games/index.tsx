@@ -71,7 +71,7 @@ export default function GamesDisplay({
       </Heading>
       <CardContainer
         description={description}
-        className='md:grid-cols-2 grid-cols-1 -ml-[18px] mr-[6px] gap-x-4 md:-ml-9 md:mr-2.5'
+        className='-ml-[18px] mr-[6px] grid-cols-1 gap-x-4 md:-ml-9 md:mr-2.5 md:grid-cols-2'
       >
         {games.map((game, index) => {
           const isActive = activeCard === index
@@ -82,8 +82,8 @@ export default function GamesDisplay({
               key={index}
               className={clsx(
                 'transition-transform',
-                (isActive || !isHovered) && !isMobile ? '' : 'md:hover:scale-100 md:hover:z-10',
-                isActive ? 'scale-100 z-10' : 'scale-95',
+                (isActive || !isHovered) && !isMobile ? '' : 'md:hover:z-10 md:hover:scale-100',
+                isActive ? 'z-10 scale-100' : 'scale-95',
               )}
             >
               <FoldingCardContainer
@@ -94,13 +94,13 @@ export default function GamesDisplay({
                 isActive={isActive}
                 handleActive={(value) => setActiveCard(value ? index : null)}
               >
-                <FoldingCardInnerFirst className='bg-black/80 border-2 overflow-hidden'>
-                  <div className='overflow-hidden my-auto content-center'>{game.image}</div>
+                <FoldingCardInnerFirst className='overflow-hidden border-2 bg-black/80'>
+                  <div className='my-auto content-center overflow-hidden'>{game.image}</div>
                 </FoldingCardInnerFirst>
                 <FoldingCardContent isActive={isActive}>
                   <FoldingCardOuter
                     className={clsx(
-                      'bg-black/20 flex items-center',
+                      'flex items-center bg-black/20',
                       game.logoPosition === undefined
                         ? 'justify-center'
                         : game.logoPosition === 'left'
@@ -123,7 +123,7 @@ export default function GamesDisplay({
                       {game.logo}
                     </div>
                   </FoldingCardOuter>
-                  <FoldingCardInnerSecond className='bg-black/80  border-2'>
+                  <FoldingCardInnerSecond className='border-2 bg-black/80'>
                     <FoldingCardInnerSecondContent className='flex flex-row items-center justify-between px-4'>
                       <div
                         className={clsx(
@@ -145,17 +145,17 @@ export default function GamesDisplay({
                         target='_blank'
                         onClick={(event) => event.stopPropagation()}
                       >
-                        <div className='relative text-white flex w-fit items-center justify-center overflow-hidden py-2 transition-transform ease-out'>
-                          <span className='absolute inset-0 z-0 h-1 translate-y-7 -translate-x-44 bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0' />
-                          <p className='md:text-sm text-xs'>Get it on Steam:</p>
+                        <div className='relative flex w-fit items-center justify-center overflow-hidden py-2 text-white transition-transform ease-out'>
+                          <span className='absolute inset-0 z-0 h-1 -translate-x-44 translate-y-7 bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0' />
+                          <p className='text-xs md:text-sm'>Get it on Steam:</p>
                         </div>
-                        <FaSteam className='transition-transform text-white hover:scale-125 hover:text-yellow-500' />
+                        <FaSteam className='text-white transition-transform hover:scale-125 hover:text-yellow-500' />
                       </Link>
                     </FoldingCardInnerSecondContent>
                     <FoldingCardInnerThird isActive={isActive}>
                       <FoldingCardInnerThirdAndFourthContentWrapper>
-                        <FoldingCardInnerThirdContent className='bg-black/80 border-2 flex flex-row justify-center'>
-                          <div className='w-full text-white flex flex-row justify-between px-4 items-center'>
+                        <FoldingCardInnerThirdContent className='flex flex-row justify-center border-2 bg-black/80'>
+                          <div className='flex w-full flex-row items-center justify-between px-4 text-white'>
                             <p>Time played:</p>
                             <p className='text-xl'>{game.timePlayed ? formatTimePlayed(game.timePlayed) : ''}</p>
                           </div>
@@ -164,8 +164,8 @@ export default function GamesDisplay({
                           isActive={isActive}
                           className='bg-black'
                         >
-                          <FoldingCardInnerFourthContent className='bg-black/80 border-2 flex flex-row justify-center'>
-                            <div className='w-full text-white flex flex-row justify-between px-4 items-center'>
+                          <FoldingCardInnerFourthContent className='flex flex-row justify-center border-2 bg-black/80'>
+                            <div className='flex w-full flex-row items-center justify-between px-4 text-white'>
                               <p>Last played:</p>
                               <p className='text-md'>{game.lastPlayed ? formatDate(game.lastPlayed) : ''}</p>
                             </div>

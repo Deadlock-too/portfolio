@@ -28,11 +28,11 @@ export default function ContentBody({
       <article className='rounded-2xl border-2 border-white bg-black/80 px-4 py-10 md:px-8 md:py-20'>
         <Heading
           as='h1'
-          className='text-[clamp(3rem,24vw,1rem)] leading-snug md:leading-normal text-center md:text-start'
+          className='text-center text-[clamp(3rem,24vw,1rem)] leading-snug md:text-start md:leading-normal'
         >
           {title}
         </Heading>
-        <div className='flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2 text-yellow-500 pt-4'>
+        <div className='flex flex-wrap justify-center gap-x-4 gap-y-2 pt-4 text-yellow-500 md:justify-start'>
           {tags.map((tag, index) => (
             <span
               className='inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-transform ease-in-out hover:scale-125'
@@ -42,7 +42,7 @@ export default function ContentBody({
             </span>
           ))}
         </div>
-        <div className='flex flex-col md:flex-row items-center mt-8 border-b border-slate-600 text-xl font-medium text-slate-300 justify-between'>
+        <div className='mt-8 flex flex-col items-center justify-between border-b border-slate-600 text-xl font-medium text-slate-300 md:flex-row'>
           <div className='text-center md:text-start'>
             {contentType === 'project' ? 'Working on it since ' : 'Published '}
             {formatDate(date)}
@@ -50,7 +50,7 @@ export default function ContentBody({
           {link && (
             <div className='group flex flex-row items-center gap-1'>
               <div className='relative flex w-fit items-center justify-center overflow-hidden py-2 transition-transform ease-out'>
-                <span className='absolute inset-0 z-0 h-1 translate-y-7 -translate-x-44 bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0' />
+                <span className='absolute inset-0 z-0 h-1 -translate-x-44 translate-y-7 bg-yellow-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0' />
                 <p className='text-sm'>Check it out on GitHub:</p>
               </div>
               <Link
@@ -64,7 +64,7 @@ export default function ContentBody({
           )}
         </div>
         <div className='prose prose-base prose-invert mt-12 w-full max-w-none md:mt-16'>
-          <div className='text-justify max-w-prose prose-li:leading-6 prose-ul:leading-6 prose-ul:my-1 hover:prose-a:text-yellow-500'>
+          <div className='max-w-prose text-justify hover:prose-a:text-yellow-500 prose-ul:my-1 prose-ul:leading-6 prose-li:leading-6'>
             <TracingBeam>
               <div dangerouslySetInnerHTML={{ __html: content }} />
             </TracingBeam>

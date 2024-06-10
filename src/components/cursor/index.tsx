@@ -112,9 +112,9 @@ export default function Cursor({ isMobile }: { isMobile: boolean }) {
       <div
         ref={ref}
         style={{ transitionProperty: 'height, width, transform' }}
-        className='absolute -top-4 -left-4 w-8 h-8 z-[200] duration-150 -translate-x-4 border-2 rounded-full pointer-events-none border-stone-800 dark:border-stone-200 ring-1 ring-stone-200 dark:ring-stone-800 bg-yellow-400/20 flex justify-center items-center'
+        className='pointer-events-none absolute -left-4 -top-4 z-[200] flex h-8 w-8 -translate-x-4 items-center justify-center rounded-full border-2 border-stone-800 bg-yellow-400/20 ring-1 ring-stone-200 duration-150 dark:border-stone-200 dark:ring-stone-800'
       >
-        <div className='w-2 h-2 rounded-full bg-stone-800 dark:bg-stone-200 ring-1 ring-stone-200 dark:ring-stone-800' />
+        <div className='h-2 w-2 rounded-full bg-stone-800 ring-1 ring-stone-200 dark:bg-stone-200 dark:ring-stone-800' />
       </div>
     </div>
   )

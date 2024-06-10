@@ -25,7 +25,7 @@ export default async function Footer({
       as='footer'
       className='text-focus-in text-slate-600'
     >
-      <footer className='container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row '>
+      <footer className='container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row'>
         <div className='name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start'>
           <Link
             href='/'
@@ -39,7 +39,7 @@ export default async function Footer({
           >
             /
           </span>
-          <p className='text-sm text-slate-300 pt-1'>
+          <p className='pt-1 text-sm text-slate-300'>
             © {new Date().getFullYear()} {settings.data.name}
           </p>
         </div>
@@ -53,7 +53,7 @@ export default async function Footer({
                 <li>
                   <Link
                     className={clsx(
-                      'group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-500',
+                      'group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-500',
                     )}
                     href={link}
                   >

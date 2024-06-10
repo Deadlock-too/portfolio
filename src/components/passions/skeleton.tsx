@@ -7,7 +7,7 @@ import MoviesDisplaySkeleton from '@/components/passions/movies/skeleton'
 export default function PassionsSkeleton() {
   return (
     <Boundary className='animate-pulse'>
-      <div className='h-20 w-[26rem] bg-gray-700/50 rounded-xl' />
+      <div className='h-20 w-[26rem] rounded-xl bg-gray-700/50' />
       {Array.from({ length: 3 }).map((_, index) => (
         <div
           key={index}

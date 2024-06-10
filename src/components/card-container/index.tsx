@@ -13,7 +13,7 @@ const CardContainer = forwardRef<HTMLDivElement, CardContainerProps>(({ classNam
       <h3 className='pt-4 text-white'>{props.description}</h3>
       <div
         ref={ref}
-        className={clsx('grid gap-x-12 gap-y-6 justify-center', className)}
+        className={clsx('grid justify-center gap-x-12 gap-y-6', className)}
         {...props}
       >
         {children}

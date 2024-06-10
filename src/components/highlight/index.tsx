@@ -37,7 +37,7 @@ export const Highlight = ({
         display: 'inline',
       }}
       className={cn(
-        `relative break-keep whitespace-nowrap inline-block pb-1 px-1 rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-500 dark:from-yellow-400/60 dark:to-yellow-400/60`,
+        `relative inline-block whitespace-nowrap break-keep rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-500 px-1 pb-1 dark:from-yellow-400/60 dark:to-yellow-400/60`,
         className,
       )}
     >

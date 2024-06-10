@@ -6,9 +6,9 @@ export default function ContentNotFound({ contentType }: { contentType: 'blog' |
 
   return (
     <Boundary className='min-h-[50vh]'>
-      <div className='jello-horizontal overflow-hidden flex flex-col min-h-[50vh] items-center justify-center px-4 text-center gap-16'>
+      <div className='jello-horizontal flex min-h-[50vh] flex-col items-center justify-center gap-16 overflow-hidden px-4 text-center'>
         <div className='space-y-4'>
-          <h1 className='text-white text-3xl font-bold tracking-tighter sm:text-5xl'>
+          <h1 className='text-3xl font-bold tracking-tighter text-white sm:text-5xl'>
             Oops! That {content} doesn’t exist.
           </h1>
           <p className='text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400'>

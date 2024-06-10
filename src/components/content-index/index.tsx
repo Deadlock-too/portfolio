@@ -19,7 +19,7 @@ export default async function ContentIndex({
   items,
 }: ContentIndexProps) {
   return (
-    <Boundary className='w-screen h-screen'>
+    <Boundary className='h-screen w-screen'>
       <Heading
         size='xl'
         className='focus-in-expand mb-8'

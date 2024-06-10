@@ -27,16 +27,16 @@ export default function MoviesDisplay({
       </Heading>
       <CardContainer
         description={description}
-        className='-ml-[18px] mr-[6px] md:-ml-6 md:mr-6 movie-grid'
+        className='movie-grid -ml-[18px] mr-[6px] md:-ml-6 md:mr-6'
       >
         {movies.map((movie, index) => (
           <FlippableCard
             key={index}
             className='h-[23rem] w-full'
           >
-            <FlippableCardFront className='flex flex-col bg-black/80 border-2 h-[23rem] p-4 w-full items-center justify-between'>
-              <div className='rounded-2xl border-2 border-slate-500 overflow-hidden'>{movie.image}</div>
-              <div className='items-center text-center justify-between text-white'>
+            <FlippableCardFront className='flex h-[23rem] w-full flex-col items-center justify-between border-2 bg-black/80 p-4'>
+              <div className='overflow-hidden rounded-2xl border-2 border-slate-500'>{movie.image}</div>
+              <div className='items-center justify-between text-center text-white'>
                 <h3 className='text-xl'>{movie.title}</h3>
                 <h4 className='text-sm text-slate-500'>
                   {formatDate(
@@ -52,8 +52,8 @@ export default function MoviesDisplay({
                 </h4>
               </div>
             </FlippableCardFront>
-            <FlippableCardBack className='bg-black/80 border-2 h-[23rem]'>
-              <div className='prose prose-invert text-sm justify-between h-full'>
+            <FlippableCardBack className='h-[23rem] border-2 bg-black/80'>
+              <div className='prose prose-invert h-full justify-between text-sm'>
                 <h3 className='text-md text-center'>
                   <Link
                     href={movie.url}
