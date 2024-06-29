@@ -8,6 +8,7 @@ import { headers } from 'next/headers'
 import React from 'react'
 import { Background } from '@/components/background'
 import { isMobile } from '@/utils'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const urbanist = Urbanist({ subsets: ['latin'] })
 
@@ -117,6 +118,7 @@ export default function RootLayout({
             }}
           />
         </Background>
+        <SpeedInsights />
       </body>
     </html>
   )
