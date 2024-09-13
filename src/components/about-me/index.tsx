@@ -20,7 +20,7 @@ export default function AboutMe() {
         </Heading>
         <div className='text-focus-in prose prose-xl prose-slate prose-invert col-start-1'>
           <p>
-            Junior developer with almost <Highlight>4 years of experience</Highlight> on back-end.
+            Junior developer with more than <Highlight>4 years of experience</Highlight> on back-end.
           </p>
           <p>
             My areas of expertise are C#, .NET, ASP.NET Boilerplate, Entity Framework, SQL, but I also have some
