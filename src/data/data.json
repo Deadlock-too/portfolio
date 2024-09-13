@@ -140,11 +140,11 @@
       "description": "Some games that I really enjoyed playing:",
       "items": [
         {
-          "name": "Horizon Forbidden West",
-          "appId": 2420110,
-          "url": "https://store.steampowered.com/app/2420110/Horizon_Forbidden_West_Complete_Edition/",
-          "logoPosition": "right",
-          "logoSize": "md"
+          "name": "Black Myth: Wukong",
+          "appId": 2358720,
+          "url": "https://store.steampowered.com/app/2358720/Black_Myth_Wukong/",
+          "logoPosition": "left",
+          "logoSize": "lg"
         },
         {
           "name": "Marvel's Spider-Man Remastered",
