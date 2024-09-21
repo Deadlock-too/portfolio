@@ -1,6 +1,6 @@
 import ContentIndex from '@/components/content-index'
-import data from '@/data/data.json'
 import { Content } from '@/types'
+import { getProjects } from '@/data/db'
 
 const title: string = 'Projects'
 const description: string = 'My tech projects'
@@ -41,8 +41,18 @@ export const metadata = {
   },
 }
 
-export default function Projects() {
-  const projects = data.projects as Content[]
+export default async function Projects() {
+  const projects = await getProjects().then((res) =>
+    res.map((project) => {
+      return {
+        id: project.id,
+        title: project.name,
+        description: project.description,
+        date: project.startDate,
+        tags: project.projectTags.map((t) => t.tag),
+      } as Content
+    }),
+  )
 
   return (
     <ContentIndex

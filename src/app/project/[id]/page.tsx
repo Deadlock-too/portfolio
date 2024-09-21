@@ -1,7 +1,6 @@
 import ContentBody from '@/components/content-body'
-import data from '@/data/data.json'
-import { Content } from '@/types'
 import { notFound } from 'next/navigation'
+import { getProject } from '@/data/db'
 
 export async function generateMetadata({
   params,
@@ -10,9 +9,19 @@ export async function generateMetadata({
     id: string
   }
 }) {
-  const project = await (async () => {
-    return (data.projects ?? ([] as Content[])).find((project) => project.id === params.id)
-  })()
+  const project = await getProject(params.id).then((res) => {
+    if (!res) return null
+
+    return {
+      id: res.id,
+      title: res.name,
+      description: res.description,
+      date: res.startDate,
+      tags: res.projectTags.map((t) => t.tag),
+      content: res.content,
+      url: res.url,
+    }
+  })
 
   let title: string
   let description: string
@@ -62,14 +71,26 @@ export async function generateMetadata({
   }
 }
 
-export default function Project({
+export default async function Project({
   params,
 }: {
   params: {
     id: string
   }
 }) {
-  const project = (data.projects ?? ([] as Content[])).find((project) => project.id === params.id)
+  const project = await getProject(params.id).then((res) => {
+    if (!res) return null
+
+    return {
+      id: res.id,
+      title: res.name,
+      description: res.description,
+      date: res.startDate,
+      tags: res.projectTags.map((t) => t.tag),
+      content: res.content,
+      url: res.url,
+    }
+  })
 
   if (!project) notFound()
 
@@ -78,7 +99,7 @@ export default function Project({
       contentType='project'
       title={project.title}
       tags={project.tags}
-      date={new Date(project.startDate)}
+      date={new Date(project.date)}
       content={project.content}
       link={project.url}
     />

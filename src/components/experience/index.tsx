@@ -1,21 +1,15 @@
 import Boundary from '@/components/boundary'
 import Heading from '@/components/heading'
 import { formatDate } from '@/utils'
+import { Experience } from '@/types'
 
 type ExperienceProps = {
   heading: string
-  items: {
-    title: string
-    start: string
-    end?: string
-    institution: string
-    description: string
-    tags?: string[]
-  }[]
+  items: Experience[]
   shortDate: boolean
 }
 
-export default function Experience({ heading, items, shortDate }: ExperienceProps) {
+export default function Experiences({ heading, items, shortDate }: ExperienceProps) {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: !shortDate ? 'long' : undefined,
@@ -68,7 +62,7 @@ export default function Experience({ heading, items, shortDate }: ExperienceProp
                     className='inline-flex items-center rounded-full border bg-black/80 px-2.5 py-0.5 text-xs font-semibold transition-all ease-in-out hover:scale-125'
                     key={index}
                   >
-                    {tag}
+                    {tag.name}
                   </span>
                 ))}
               </div>

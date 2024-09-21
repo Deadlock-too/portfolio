@@ -1,7 +1,6 @@
 import ContentBody from '@/components/content-body'
-import { Content } from '@/types'
-import data from '@/data/data.json'
 import { notFound } from 'next/navigation'
+import { getBlogPost } from '@/data/db'
 
 export async function generateMetadata({
   params,
@@ -10,9 +9,18 @@ export async function generateMetadata({
     id: string
   }
 }) {
-  const blogPost = await (async () => {
-    return (data.blogPosts ?? ([] as Content[])).find((blog) => blog.id === params.id)
-  })()
+  const blogPost = await getBlogPost(params.id).then((res) => {
+    if (!res) return null
+
+    return {
+      id: res.id,
+      title: res.title,
+      description: res.description,
+      date: res.date,
+      content: res.content,
+      tags: res.blogPostTags.map((t) => t.tag),
+    }
+  })
 
   let title: string
   let description: string
@@ -62,14 +70,25 @@ export async function generateMetadata({
   }
 }
 
-export default function Blog({
+export default async function Blog({
   params,
 }: {
   params: {
     id: string
   }
 }) {
-  const blogPost = (data.blogPosts ?? ([] as Content[])).find((blog) => blog.id === params.id)
+  const blogPost = await getBlogPost(params.id).then((res) => {
+    if (!res) return null
+
+    return {
+      id: res.id,
+      title: res.title,
+      description: res.description,
+      date: res.date,
+      content: res.content,
+      tags: res.blogPostTags.map((t) => t.tag),
+    }
+  })
 
   if (!blogPost) notFound()
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { Game } from '@/types'
+import { Game, LogoPosition, LogoSize } from '@/types'
 import Heading from '@/components/heading'
 import CardContainer from '@/components/card-container'
 import Link from 'next/link'
@@ -103,7 +103,7 @@ export default function GamesDisplay({
                       'flex items-center bg-black/20',
                       game.logoPosition === undefined
                         ? 'justify-center'
-                        : game.logoPosition === 'left'
+                        : game.logoPosition === LogoPosition.left
                           ? 'flex-row pl-4'
                           : 'justify-end pr-4',
                     )}
@@ -111,11 +111,11 @@ export default function GamesDisplay({
                     <div
                       className={clsx(
                         'absolute content-center',
-                        game.logoSize === 'sm'
+                        game.logoSize === LogoSize.sm
                           ? 'w-32'
-                          : game.logoSize === 'md'
+                          : game.logoSize === LogoSize.md
                             ? 'w-36'
-                            : game.logoSize === 'lg'
+                            : game.logoSize === LogoSize.lg
                               ? 'w-44'
                               : null,
                       )}
@@ -128,11 +128,11 @@ export default function GamesDisplay({
                       <div
                         className={clsx(
                           'content-center',
-                          game.logoSize === 'sm'
+                          game.logoSize === LogoSize.sm
                             ? 'w-32'
-                            : game.logoSize === 'md'
+                            : game.logoSize === LogoSize.md
                               ? 'w-36'
-                              : game.logoSize === 'lg'
+                              : game.logoSize === LogoSize.lg
                                 ? 'w-44'
                                 : null,
                         )}

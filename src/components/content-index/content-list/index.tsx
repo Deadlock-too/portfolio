@@ -90,10 +90,10 @@ export default function ContentList({ items, contentType, viewMoreText = 'Read M
                 <div className='flex flex-wrap gap-4 text-lg font-bold text-yellow-500'>
                   {item.tags.map((tag) => (
                     <span
-                      key={tag}
+                      key={tag.name}
                       className='inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-transform ease-in-out hover:scale-125'
                     >
-                      {tag}
+                      {tag.name}
                     </span>
                   ))}
                 </div>

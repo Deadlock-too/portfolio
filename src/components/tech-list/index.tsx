@@ -7,13 +7,17 @@ import Boundary from '@/components/boundary'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import clsx from 'clsx'
-import data from '@/data/data.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function TechList() {
-  const techs = data.techList
+type TechProps = {
+  items: {
+    name: string
+    color: string
+  }[]
+}
 
+export default function TechList({ items }: TechProps) {
   const component = React.useRef(null)
 
   useEffect(() => {
@@ -55,7 +59,7 @@ export default function TechList() {
           What I use
         </Heading>
       </Boundary>
-      {techs.map((tech, index) => (
+      {items.map((tech, index) => (
         <div
           key={index}
           className='text-focus-in tech-row mb-8 flex items-center justify-center gap-4 text-white/20'

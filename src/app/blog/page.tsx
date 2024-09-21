@@ -1,5 +1,6 @@
 import ContentIndex from '@/components/content-index'
-import data from '@/data/data.json'
+import { getBlogPosts } from '@/data/db'
+import { Content } from '@/types'
 
 const title: string = 'Blog'
 const description: string = "My blog posts about what I've learned."
@@ -40,8 +41,19 @@ export const metadata = {
   },
 }
 
-export default function Blog() {
-  const blogPosts = data.blogPosts
+export default async function Blog() {
+  const blogPosts = await getBlogPosts().then((res) =>
+    res.map((blogPost) => {
+      return {
+        id: blogPost.id,
+        title: blogPost.title,
+        description: blogPost.description,
+        date: blogPost.date,
+        content: blogPost.content,
+        tags: blogPost.blogPostTags.map((t) => t.tag),
+      } as Content
+    }),
+  )
 
   return (
     <ContentIndex

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa6'
 import { formatDate } from '@/utils'
 import { TracingBeam } from '@/components/tracing-beam'
+import { Tag } from '@/types'
 
 export default function ContentBody({
   contentType,
@@ -15,7 +16,7 @@ export default function ContentBody({
 }: {
   contentType: 'project' | 'blog'
   title: string
-  tags: string[]
+  tags: Tag[]
   date: Date
   content: string
   link?: string
@@ -38,7 +39,7 @@ export default function ContentBody({
               className='inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-transform ease-in-out hover:scale-125'
               key={index}
             >
-              {tag}
+              {tag.name}
             </span>
           ))}
         </div>

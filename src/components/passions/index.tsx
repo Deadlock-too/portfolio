@@ -3,18 +3,19 @@ import Heading from '@/components/heading'
 import MusicDisplay from '@/components/passions/music'
 import GamesDisplay from '@/components/passions/games'
 import MoviesDisplay from '@/components/passions/movies'
-import { Game, Movie, Song } from '@/types'
-import data from '@/data/data.json'
+import { Game, LogoPosition, LogoSize, Movie, Passions as Pass, Song } from '@/types'
 import SteamAPI from '@/internalSteamApi/index'
 import { SpotifyApi } from '@spotify/web-api-ts-sdk'
 import Image from 'next/image'
 import React from 'react'
 import { headers } from 'next/headers'
 import { isMobile } from '@/utils'
+import { getGames, getMovies } from '@/data/db'
 
 type PassionsProps = {
   heading: string
   items: {
+    id: number
     name: string
     icon: string
     description: string
@@ -22,6 +23,26 @@ type PassionsProps = {
 }
 
 export default async function Passions({ heading, items }: PassionsProps) {
+  let movieQuery = await getMovies().then((movies) => {
+    return movies.map((movie) => {
+      return {
+        title: movie.name,
+        url: movie.url,
+      } as Movie
+    })
+  })
+  let gameQuery = await getGames().then((games) => {
+    return games.map((game) => {
+      return {
+        appId: game.id,
+        title: game.name,
+        url: game.url,
+        logoPosition: game.logoPosition as LogoPosition,
+        logoSize: game.logoSize as LogoSize,
+      } as Game
+    })
+  })
+
   const secrets = {
     spotify_user_id: process.env.SPOTIFY_USER_ID ?? '',
     spotify_client_id: process.env.STEAM_CLIENT_ID ?? '',
@@ -43,7 +64,7 @@ export default async function Passions({ heading, items }: PassionsProps) {
   await RetryOnFailure(() =>
     GetMovies({
       secrets,
-      sources: data.passions.find((passion) => passion.name === 'Movies')?.items ?? [],
+      sources: movieQuery ?? [],
       movies,
     }),
   )
@@ -57,7 +78,7 @@ export default async function Passions({ heading, items }: PassionsProps) {
     }),
   )
 
-  let games: Game[] = []
+  let games: Game[] = gameQuery ?? []
   await RetryOnFailure(() =>
     GetGames({
       steamApi,
@@ -82,8 +103,8 @@ export default async function Passions({ heading, items }: PassionsProps) {
             className='text-focus-in ml-6 mt-8 md:ml-12 md:mt-16'
           >
             {(() => {
-              switch (item.name) {
-                case 'Music':
+              switch (item.id) {
+                case Pass.Music:
                   if (songs.length === 0) return null
                   return (
                     <MusicDisplay
@@ -92,7 +113,7 @@ export default async function Passions({ heading, items }: PassionsProps) {
                       description={item.description}
                     />
                   )
-                case 'Gaming':
+                case Pass.Games:
                   if (games.length === 0) return null
                   return (
                     <GamesDisplay
@@ -102,7 +123,7 @@ export default async function Passions({ heading, items }: PassionsProps) {
                       isMobile={mobile}
                     />
                   )
-                case 'Movies':
+                case Pass.Movies:
                   if (movies.length === 0) return null
                   return (
                     <MoviesDisplay
@@ -168,25 +189,6 @@ async function GetGames({
   secrets: { steam_id: string }
   games: Game[]
 }) {
-  data.passions
-    .find((passion) => passion.name === 'Gaming')
-    ?.items?.forEach((item) => {
-      const typedItem = item as {
-        appId: number
-        name: string
-        url: string
-        logoPosition?: 'left' | 'right'
-        logoSize?: 'sm' | 'md' | 'lg'
-      }
-      games.push({
-        appId: typedItem.appId,
-        title: typedItem.name,
-        url: typedItem.url,
-        logoPosition: typedItem.logoPosition,
-        logoSize: typedItem.logoSize,
-      })
-    })
-
   return steamApi
     .getUserOwnedGames(secrets.steam_id, {
       filterApps: games.map((game) => game.appId),
