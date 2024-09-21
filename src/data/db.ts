@@ -20,13 +20,13 @@ const internalGetPassions = async () =>
 
 const internalGetEducation = async () =>
   await db.query.experiences.findMany({
-    orderBy: [asc(schema.experiences.startDate)],
+    orderBy: [desc(schema.experiences.startDate)],
     where: eq(schema.experiences.type, ExperienceType.education),
   })
 
 const internalGetWorkExperience = async () =>
   await db.query.experiences.findMany({
-    orderBy: [asc(schema.experiences.startDate)],
+    orderBy: [desc(schema.experiences.startDate)],
     where: eq(schema.experiences.type, ExperienceType.work),
     with: {
       experienceTags: {
