@@ -19,10 +19,15 @@ type PassionsProps = {
     name: string
     icon: string
     description: string
+    show: boolean
   }[]
 }
 
 export default async function Passions({ heading, items }: PassionsProps) {
+  const visiblePassions = items.filter(passion => passion.show)
+
+  if (visiblePassions.length === 0) return null
+
   let movieQuery = await getMovies().then((movies) => {
     return movies.map((movie) => {
       return {
