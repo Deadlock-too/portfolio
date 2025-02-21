@@ -8,7 +8,7 @@ import { ExperienceType } from '@/types'
 const connection = neon(process.env.POSTGRES_URL!)
 export const db = drizzle(connection, { schema })
 
-const revalidationTime = 60 * 60 * 24
+const revalidationTime = 60 * 60 * 24 * 30 // 30 days
 
 const internalGetMovies = async () => db.query.movies.findMany()
 const internalGetGames = async () => db.query.games.findMany()
